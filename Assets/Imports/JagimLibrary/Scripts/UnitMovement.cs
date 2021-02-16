@@ -5,17 +5,17 @@ using UnityEngine;
 
 public class UnitMovement : MonoBehaviour
 {
-    protected UnitController controller;
+    protected UnitController _controller;
 
-    [SerializeField, LabelText("Movement Speed")]
+    [SerializeField, BoxGroup("Base Variables"), LabelText("Movement Speed")]
     protected float fMovementSpeed = 0.0f;
 
-    [SerializeField, LabelText("Current Speed"), ReadOnly]
+    [SerializeField, BoxGroup("Base Variables"), LabelText("Current Speed"), ReadOnly]
     protected float fCurrentSpeed;
 
     protected virtual void InitController()
     {
-        controller = new UnitController();
+        _controller = new UnitController();
     }
 
     protected virtual void InitVariables()

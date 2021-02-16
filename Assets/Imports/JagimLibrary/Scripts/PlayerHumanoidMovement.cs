@@ -25,17 +25,21 @@ public class PlayerHumanoidMovement : PlayerMovement
 
     protected override void InitController()
     {
-        controller = GetComponent<PlayerHumanoidController>();
+        _controller = GetComponent<PlayerHumanoidController>();
     }
 
     protected override void InitVariables()
     {
         base.InitVariables();
 
-        _animator = GetComponent<Animator>();
+        _animator = (_controller as PlayerHumanoidController).GetAnimator();
+        _rigidbody = (_controller as PlayerHumanoidController).GetRigidbody();
 
-        _inputActions.Player.Sprint.performed += ctx => StartSprinting();
-        _inputActions.Player.Sprint.canceled += ctx => StopSprinting();
+        if (_fSprintSpeed != 0.0f)
+        {
+            _inputActions.Player.Sprint.performed += ctx => StartSprinting();
+            _inputActions.Player.Sprint.canceled += ctx => StopSprinting();
+        }
     }
 
     private void StartSprinting()
@@ -54,9 +58,9 @@ public class PlayerHumanoidMovement : PlayerMovement
     {
         base.UpdateAnimations();
 
-        if((controller as PlayerHumanoidController).CanMove)
+        if((_controller as PlayerHumanoidController).CanMove)
         {
-            if ((_movementInputVector.x != 0 || _movementInputVector.y != 0) && !(controller as PlayerHumanoidController).IsLockedOntoEnemy)
+            if ((_movementInputVector.x != 0 || _movementInputVector.y != 0) && !(_controller as PlayerHumanoidController).IsLockedOntoEnemy)
             {
                 _animator.SetBool("bWalking", true);
             }
@@ -75,12 +79,12 @@ public class PlayerHumanoidMovement : PlayerMovement
     {
         base.UpdateMovement();
 
-        if((controller as PlayerHumanoidController).CanMove)
+        if((_controller as PlayerHumanoidController).CanMove)
         {
             _movementInputVector = _inputActions.Player.Move.ReadValue<Vector2>();
 
             Vector2 movementOffset = _movementInputVector * fCurrentSpeed * Time.fixedDeltaTime;
-            Vector3 newPos = new Vector3(_rigidbody.position.x + movementOffset.x, _rigidbody.position.y, _rigidbody.position.z + movementOffset.y);
+            Vector3 newPos = new Vector3(_rigidbody.position.x - movementOffset.y, _rigidbody.position.y, _rigidbody.position.z + movementOffset.x);
             _rigidbody.MovePosition(newPos);
         }
     }

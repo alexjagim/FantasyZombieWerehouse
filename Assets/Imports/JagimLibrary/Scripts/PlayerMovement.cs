@@ -12,14 +12,14 @@ public class PlayerMovement : UnitMovement
     {
         base.InitController();
 
-        controller = GetComponent<PlayerController>();
+        _controller = GetComponent<PlayerController>();
     }
 
     protected override void InitVariables()
     {
         base.InitVariables();
 
-        _inputActions = (controller as PlayerController).GetInputActions();
+        _inputActions = (_controller as PlayerController).GetInputActions();
         _rigidbody = GetComponent<Rigidbody>();
     }
 }

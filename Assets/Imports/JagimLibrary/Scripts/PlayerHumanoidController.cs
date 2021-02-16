@@ -5,7 +5,12 @@ using Sirenix.OdinInspector;
 
 public class PlayerHumanoidController : PlayerController
 {
-    [SerializeField, Required("Game Manager needed for Player Controller")]
+    [SerializeField, LabelText("Rigidbody"), BoxGroup("Components")]
+    private Rigidbody _rigidbody;
+    [SerializeField, LabelText("Animator"), BoxGroup("Components")]
+    private Animator _animator;
+
+    [SerializeField, Required("Game Manager needed for Player Controller"), BoxGroup("Components")]
     private GameManager _gameManager;
 
     [SerializeField, LabelText("Locked on Enemy")]
@@ -37,13 +42,20 @@ public class PlayerHumanoidController : PlayerController
         }
     }
 
-    private void Awake()
+    protected override void InitVariables()
     {
-        _inputActions = new PlayerInputActions();
-    }
+        base.InitVariables();
 
-    private void Start()
-    {
+        if (_rigidbody == null)
+        {
+            _rigidbody = GetComponent<Rigidbody>();
+        }
+
+        if (_animator == null)
+        {
+            _animator = GetComponent<Animator>();
+        }
+
         if (_gameManager == null)
         {
             _gameManager = FindObjectOfType<GameManager>();
@@ -56,6 +68,16 @@ public class PlayerHumanoidController : PlayerController
     public GameManager GetGameManager()
     {
         return _gameManager;
+    }
+
+    public Rigidbody GetRigidbody()
+    {
+        return _rigidbody;
+    }
+
+    public Animator GetAnimator()
+    {
+        return _animator;
     }
 
     public void ToggleIsLockedOntoEnemy()

@@ -25,7 +25,7 @@ public class PlayerLookTowardKeyMovement : MonoBehaviour
 
             if ((_movementInputVector.x != 0 || _movementInputVector.y != 0) && !_playerController.IsLockedOntoEnemy)
             {
-                Vector3 rot = new Vector3(_movementInputVector.x, 0.0f, _movementInputVector.y);
+                Vector3 rot = new Vector3(-_movementInputVector.y, 0.0f, _movementInputVector.x);
                 transform.rotation = Quaternion.LookRotation(rot);
             }
         }

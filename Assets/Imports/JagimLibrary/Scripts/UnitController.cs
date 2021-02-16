@@ -4,16 +4,16 @@ using System;
 
 public class UnitController : MonoBehaviour
 {
-    [SerializeField, LabelText("Current: "), HorizontalGroup("Health", LabelWidth = 50, Title = "Health")]
+    [SerializeField, LabelText("Current: "), BoxGroup("Base Variables"), HorizontalGroup("Base Variables/Health", LabelWidth = 50, Title = "Health")]
     private int _iCurrentHealth;
 
-    [SerializeField, LabelText("Max: "), HorizontalGroup("Health"), LabelWidth(30)]
+    [SerializeField, LabelText("Max: "), BoxGroup("Base Variables"), HorizontalGroup("Base Variables/Health"), LabelWidth(30)]
     private int _iMaxHealth;
 
-    [SerializeField, LabelText("Current: "), HorizontalGroup("Stamina", LabelWidth = 50, Title = "Stamina")]
+    [SerializeField, LabelText("Current: "), BoxGroup("Base Variables"), HorizontalGroup("Base Variables/Stamina", LabelWidth = 50, Title = "Stamina")]
     private int _iCurrentStamina;
 
-    [SerializeField, LabelText("Max: "), HorizontalGroup("Stamina"), LabelWidth(30)]
+    [SerializeField, LabelText("Max: "), BoxGroup("Base Variables"), HorizontalGroup("Base Variables/Stamina"), LabelWidth(30)]
     private int _iMaxStamina;
 
     public event Action action_OnDestroy;
