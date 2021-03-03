@@ -70,7 +70,7 @@ public class UnitController : MonoBehaviour
 
     protected virtual void DestroyUnit()
     {
-        action_OnDestroy?.Invoke();
+        action_OnDestroy();
         Destroy(gameObject);
     }
 }
