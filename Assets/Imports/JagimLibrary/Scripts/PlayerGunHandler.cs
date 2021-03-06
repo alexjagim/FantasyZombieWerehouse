@@ -142,7 +142,7 @@ public class PlayerGunHandler : PlayerWeaponHandler
         _bIsReloading = false;
     }
 
-    public void AddAmmo(int iAmount, Weapon weapon)
+    public void AddAmmo(int iAmount, Gun weapon)
     {
         if (weapon != null)
         {

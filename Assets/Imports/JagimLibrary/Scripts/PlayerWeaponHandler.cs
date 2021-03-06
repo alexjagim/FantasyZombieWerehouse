@@ -7,10 +7,10 @@ public class PlayerWeaponHandler : MonoBehaviour
 {
     [Title("Weapon Variables")]
     [SerializeField, LabelText("Current Weapon")]
-    protected Weapon _weapon_Current;
+    protected Gun _weapon_Current;
 
     [SerializeField, LabelText("Equipped Weapons")]
-    protected List<Weapon> _weapons_Equipped;
+    protected List<Gun> _weapons_Equipped;
 
     [SerializeField, LabelText("Weapon Spawn Parent")]
     private Transform _trans_WeaponSpawnParent;
@@ -31,7 +31,7 @@ public class PlayerWeaponHandler : MonoBehaviour
 
         _list_weapons = new List<GameObject>();
 
-        foreach(Weapon w in _weapons_Equipped)
+        foreach(Gun w in _weapons_Equipped)
         {
             InstantiateWeapon(w);
         }
@@ -46,7 +46,7 @@ public class PlayerWeaponHandler : MonoBehaviour
         _animator.SetFloat("Body_Horizontal_f", _weapon_Current.fBodyHorizontalRotation);
     }
 
-    protected virtual void InstantiateWeapon(Weapon w)
+    protected virtual void InstantiateWeapon(Gun w)
     {
         GameObject temp = Instantiate(w.prefab);
 

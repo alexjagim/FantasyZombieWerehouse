@@ -9,7 +9,7 @@ public class Ammo : PickupItem
     private int iPickUpAmount;
 
     [SerializeField, LabelText("Assigned Weapon")]
-    private Weapon weapon;
+    private Gun weapon;
 
     public override void Pickup(GameObject obj)
     {

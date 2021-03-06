@@ -1,22 +1,16 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
 
-[CreateAssetMenu(fileName = "New Weapon", menuName = "Weapon")]
+[CreateAssetMenu(fileName = "New Weapon", menuName = "Weapons/Generic Weapon")]
 public class Weapon : ScriptableObject
 {
     public new string name;
     public GameObject prefab;
 
-    public float fireSpeed;
-    public int ammoClipSize;
-
-    public float projectileSpeed;
+    public float attackSpeed;
     public int damage;
-
-    [LabelText("Cone of Fire"), Range(0, 1)]
-    public float fConeOfFire;
 
     [LabelText("Animation Toggle")]
     public string sAnimationToggle;

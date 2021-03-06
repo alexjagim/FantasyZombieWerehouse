@@ -7,7 +7,7 @@ using Sirenix.OdinInspector;
 public class StateController : MonoBehaviour
 {
     public AIState currentState;
-    public AIState remainState;
+    public AIState remainState; 
 
     private bool aiActive = true;
 
