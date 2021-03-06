@@ -16,22 +16,22 @@ public class SetAnimationsAction : AIAction
             {
                 case AnimatorControllerParameterType.Bool:
                     {
-                        controller.animator.SetBool(animation.sID, animation.bValue);
+                        (controller as AIStateController).animator.SetBool(animation.sID, animation.bValue);
                         break;
                     }
                 case AnimatorControllerParameterType.Float:
                     {
-                        controller.animator.SetFloat(animation.sID, animation.fValue);
+                        (controller as AIStateController).animator.SetFloat(animation.sID, animation.fValue);
                         break;
                     }
                 case AnimatorControllerParameterType.Int:
                     {
-                        controller.animator.SetInteger(animation.sID, animation.iValue);
+                        (controller as AIStateController).animator.SetInteger(animation.sID, animation.iValue);
                         break;
                     }
                 case AnimatorControllerParameterType.Trigger:
                     {
-                        controller.animator.SetTrigger(animation.sID);
+                        (controller as AIStateController).animator.SetTrigger(animation.sID);
                         break;
                     }
             }

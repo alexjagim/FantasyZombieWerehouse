@@ -16,7 +16,7 @@ public class WithinDistanceDecision : AIDecision
 
     public bool WithinDistance(StateController controller)
     {
-        if (Vector3.Distance(controller.player.transform.position, controller.transform.position) <= fDistance)
+        if (Vector3.Distance((controller as AIStateController).player.transform.position, controller.transform.position) <= fDistance)
         {
             return true;
         }

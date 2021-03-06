@@ -9,31 +9,15 @@ public class StateController : MonoBehaviour
     public AIState currentState;
     public AIState remainState;
 
-    [LabelText("Sight Range")]
-    public float fSightRange;
-    [LabelText("Attack Range")]
-    public float fAttackRange;
-
-    public Transform player;
-
-    [HideInInspector]
-    public NavMeshAgent navMeshAgent;
-    [HideInInspector]
-    public AIController enemyController;
-
-    public Animator animator;
-
     private bool aiActive = true;
 
     private void Awake()
     {
-        navMeshAgent = GetComponent<NavMeshAgent>();
-        enemyController = GetComponent<AIController>();
+        SetupAI();
     }
 
-    public void SetupAI()
+    public virtual void SetupAI()
     {
-
     }
 
     public void Update()
@@ -52,8 +36,8 @@ public class StateController : MonoBehaviour
         }
     }
 
-    private void OnExitState()
+    protected virtual void OnExitState()
     {
-        navMeshAgent.SetDestination(this.transform.position);
+
     }
 }
