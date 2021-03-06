@@ -19,7 +19,7 @@ public class StateController : MonoBehaviour
     [HideInInspector]
     public NavMeshAgent navMeshAgent;
     [HideInInspector]
-    public EnemyController enemyController;
+    public AIController enemyController;
 
     public Animator animator;
 
@@ -28,7 +28,7 @@ public class StateController : MonoBehaviour
     private void Awake()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
-        enemyController = GetComponent<EnemyController>();
+        enemyController = GetComponent<AIController>();
     }
 
     public void SetupAI()
