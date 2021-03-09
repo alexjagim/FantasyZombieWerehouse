@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &674707208464243134
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4942553657898725017}
+  m_Layer: 0
+  m_Name: Right Hand Spawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4942553657898725017
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 674707208464243134}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0.123, y: -0.011, z: -0.232}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5343631826643234873}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!1 &5343631827246554778
 GameObject:
   m_ObjectHideFlags: 0
@@ -13,6 +43,7 @@ GameObject:
   - component: {fileID: 1430742971}
   - component: {fileID: 6214896487973385834}
   - component: {fileID: 2784413055734851771}
+  - component: {fileID: 5984621789960972883}
   - component: {fileID: 1430742972}
   m_Layer: 0
   m_Name: Player
@@ -100,6 +131,23 @@ MonoBehaviour:
   fMovementSpeed: 10
   fCurrentSpeed: 0
   _fSprintSpeed: 0
+--- !u!114 &5984621789960972883
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5343631827246554778}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24cd3fdd803397241b36ef2533ef120a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _weapon_Current: {fileID: 11400000, guid: 65f83c36fe5ad6c459f13ec4556f6d31, type: 2}
+  _weapons_Equipped:
+  - {fileID: 11400000, guid: 65f83c36fe5ad6c459f13ec4556f6d31, type: 2}
+  _trans_WeaponSpawnParent: {fileID: 4942553657898725017}
+  _trans_SecondaryWeaponSpawnParent: {fileID: 9191976478375866837}
 --- !u!114 &1430742972
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -112,6 +160,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e69c9ea57190f894880aa8fa8000e5c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &7939582296417619049
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9191976478375866837}
+  m_Layer: 0
+  m_Name: Left Hand Spawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9191976478375866837
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7939582296417619049}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: -0.7071068, w: 0}
+  m_LocalPosition: {x: -0.123, y: -0.15, z: -0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5343631826643202037}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 90, y: 180, z: 0}
 --- !u!1001 &1350270224398274132
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -181,5 +259,15 @@ Transform:
 --- !u!95 &5343631826635998747 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 6383143599543388239, guid: ec8cb55dea48599499f357baa1e2b608, type: 3}
+  m_PrefabInstance: {fileID: 1350270224398274132}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &5343631826643202037 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6383143599550357921, guid: ec8cb55dea48599499f357baa1e2b608, type: 3}
+  m_PrefabInstance: {fileID: 1350270224398274132}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &5343631826643234873 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6383143599550332525, guid: ec8cb55dea48599499f357baa1e2b608, type: 3}
   m_PrefabInstance: {fileID: 1350270224398274132}
   m_PrefabAsset: {fileID: 0}

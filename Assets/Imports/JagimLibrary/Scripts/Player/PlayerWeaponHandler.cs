@@ -7,10 +7,10 @@ public class PlayerWeaponHandler : MonoBehaviour
 {
     [Title("Weapon Variables")]
     [SerializeField, LabelText("Current Weapon")]
-    protected Gun _weapon_Current;
+    protected Weapon _weapon_Current;
 
     [SerializeField, LabelText("Equipped Weapons")]
-    protected List<Gun> _weapons_Equipped;
+    protected List<Weapon> _weapons_Equipped;
 
     [SerializeField, LabelText("Weapon Spawn Parent")]
     private Transform _trans_WeaponSpawnParent;
@@ -24,31 +24,40 @@ public class PlayerWeaponHandler : MonoBehaviour
 
     protected int _iWeaponIndex;
 
-    protected virtual void Start()
+    protected virtual void InstantiateVariables()
     {
-        _animator = GetComponent<Animator>();
+        _animator = GetComponent<PlayerHumanoidController>().GetAnimator();
         _inputActions = GetComponent<PlayerHumanoidController>().GetInputActions();
 
         _list_weapons = new List<GameObject>();
 
-        foreach(Gun w in _weapons_Equipped)
+        for (int i = 0; i < _weapons_Equipped.Count; ++i)
         {
-            InstantiateWeapon(w);
+            InstantiateWeapon(i);
         }
 
         _iWeaponIndex = _weapons_Equipped.IndexOf(_weapon_Current);
 
-        _obj_weaponCurrent = _list_weapons[_iWeaponIndex];
-        _obj_weaponCurrent.SetActive(true);
+        SetupInitialWeapon();
 
-        _animator.SetBool(_weapon_Current.sAnimationToggle, true);
+        AnimationEquipWeapon();
         _animator.SetFloat("Head_Horizontal_f", _weapon_Current.fHeadHorizontalRotation);
         _animator.SetFloat("Body_Horizontal_f", _weapon_Current.fBodyHorizontalRotation);
     }
 
-    protected virtual void InstantiateWeapon(Gun w)
+    protected virtual void AnimationEquipWeapon()
     {
-        GameObject temp = Instantiate(w.prefab);
+        _animator.SetBool(_weapon_Current.sAnimationToggle, true);
+    }
+
+    protected virtual void AnimationUnequipWeapon()
+    {
+        _animator.SetBool(_weapon_Current.sAnimationToggle, false);
+    }
+
+    protected virtual void InstantiateWeapon(int index)
+    {
+        GameObject temp = Instantiate(_weapons_Equipped[index].prefab);
 
         temp.transform.parent = _trans_WeaponSpawnParent;
         temp.transform.localPosition = new Vector3(0, 0, 0);
@@ -57,6 +66,12 @@ public class PlayerWeaponHandler : MonoBehaviour
         temp.SetActive(false);
 
         _list_weapons.Add(temp);
+    }
+
+    protected virtual void SetupInitialWeapon()
+    {
+        _obj_weaponCurrent = _list_weapons[_iWeaponIndex];
+        _obj_weaponCurrent.SetActive(true);
     }
 
     protected virtual void SwitchWeapon(int iWeaponIndex)
@@ -69,14 +84,14 @@ public class PlayerWeaponHandler : MonoBehaviour
         _iWeaponIndex = iWeaponIndex;
 
         _obj_weaponCurrent.SetActive(false);
-        _animator.SetBool(_weapon_Current.sAnimationToggle, false);
+        AnimationUnequipWeapon();
 
         _obj_weaponCurrent = _list_weapons[iWeaponIndex];
         _weapon_Current = _weapons_Equipped[iWeaponIndex];
 
         _obj_weaponCurrent.SetActive(true);
 
-        _animator.SetBool(_weapon_Current.sAnimationToggle, true);
+        AnimationEquipWeapon();
         _animator.SetFloat("Head_Horizontal_f", _weapon_Current.fHeadHorizontalRotation);
         _animator.SetFloat("Body_Horizontal_f", _weapon_Current.fBodyHorizontalRotation);
     }
@@ -93,7 +108,7 @@ public class PlayerWeaponHandler : MonoBehaviour
         SwitchWeapon(i);
     }
 
-    protected virtual void Update()
+    protected virtual void UpdateObject()
     {
         if(CanAttack())
         {
@@ -111,5 +126,14 @@ public class PlayerWeaponHandler : MonoBehaviour
 
     }
 
+    private void Start()
+    {
+        InstantiateVariables();
+    }
+
+    private void Update()
+    {
+        UpdateObject();
+    }
 
 }

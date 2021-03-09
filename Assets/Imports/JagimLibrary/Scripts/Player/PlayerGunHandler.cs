@@ -43,18 +43,17 @@ public class PlayerGunHandler : PlayerWeaponHandler
 
     private Transform _trans_bulletSpawnPosition;
 
-    // Start is called before the first frame update
-    protected override void Start()
+    protected override void InstantiateVariables()
     {
-        base.Start();
+        base.InstantiateVariables();
 
-        _iAmmoClipSize = _weapon_Current.ammoClipSize;
+        _iAmmoClipSize = (_weapon_Current as Gun).ammoClipSize;
         _iAmmoCurrent = _iAmmoClipSize;
 
         _trans_bulletSpawnPosition = _obj_weaponCurrent.GetComponent<GunController>().trans_BulletSpawn;
     }
 
-    protected override void Update()
+    protected override void UpdateObject()
     {
         if (CanAttack())
         {
@@ -85,7 +84,7 @@ public class PlayerGunHandler : PlayerWeaponHandler
     private void Fire()
     {
         GameObject obj = Instantiate(_bulletPrefab, _trans_bulletSpawnPosition.position, GetBulletRotation(), null);
-        obj.GetComponent<ProjectileInformation>().Speed = _weapon_Current.projectileSpeed;
+        obj.GetComponent<ProjectileInformation>().Speed = (_weapon_Current as Gun).projectileSpeed;
         obj.GetComponent<ProjectileInformation>().Damage = _weapon_Current.damage;
 
         _animator.SetTrigger("Fire");
@@ -97,13 +96,13 @@ public class PlayerGunHandler : PlayerWeaponHandler
 
     protected virtual Quaternion GetBulletRotation()
     {
-        if (_weapon_Current.fConeOfFire == 0)
+        if ((_weapon_Current as Gun).fConeOfFire == 0)
         {
             return transform.rotation;
         }
         else
         {
-            float fDegrees = Random.Range(0, _weapon_Current.fConeOfFire) - (_weapon_Current.fConeOfFire / 2);
+            float fDegrees = Random.Range(0, (_weapon_Current as Gun).fConeOfFire) - ((_weapon_Current as Gun).fConeOfFire / 2);
 
             return new Quaternion(transform.rotation.x, transform.rotation.y + fDegrees, transform.rotation.z, transform.rotation.w);
         }

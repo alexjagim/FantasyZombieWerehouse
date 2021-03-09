@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6558ea01421c17a4e8655a1c72a941d4, type: 3}
+  m_Name: SwordShield
+  m_EditorClassIdentifier: 
+  name: Sword and Shield
+  prefab: {fileID: 7811675851310572638, guid: ad1495daa126ea7459a881caa0b3c81d, type: 3}
+  attackSpeed: 1
+  damage: 1
+  sAnimationToggle: Attack
+  fHeadHorizontalRotation: 0
+  fBodyHorizontalRotation: 0
+  prefab_secondary: {fileID: 7139381039727924554, guid: cdd70e1863029674dafd2aa60e39f261, type: 3}
+  bSecondaryCanAttack: 0
+  damage_secondary: 0

@@ -739,6 +739,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 474070324882570008, guid: 77e20cec3dba4b74da2c021839756749, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7421431462096698830, guid: 77e20cec3dba4b74da2c021839756749, type: 3}
       propertyPath: player
       value: 
@@ -796,18 +800,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1430742970, guid: f22c00f232e341847a994989609be5e0, type: 3}
-      propertyPath: m_UseGravity
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1430742970, guid: f22c00f232e341847a994989609be5e0, type: 3}
-      propertyPath: m_Constraints
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1430742972, guid: f22c00f232e341847a994989609be5e0, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5343631827246554778, guid: f22c00f232e341847a994989609be5e0, type: 3}
       propertyPath: m_Name
       value: Player
