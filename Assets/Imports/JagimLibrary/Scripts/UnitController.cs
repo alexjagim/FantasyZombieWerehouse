@@ -41,11 +41,6 @@ public class UnitController : MonoBehaviour
     public void TakeDamage(int iDamage)
     {
         _iCurrentHealth -= iDamage;
-
-        if (_iCurrentHealth <= 0)
-        {
-            DestroyUnit();
-        }
     }
 
     public int GetCurrentHealth()
@@ -70,7 +65,7 @@ public class UnitController : MonoBehaviour
 
     protected virtual void DestroyUnit()
     {
-        action_OnDestroy();
+        action_OnDestroy?.Invoke();
         Destroy(gameObject);
     }
 }

@@ -15,6 +15,15 @@ public class PlayerWeaponHandler : MonoBehaviour
     [SerializeField, LabelText("Weapon Spawn Parent")]
     private Transform _trans_WeaponSpawnParent;
 
+    [SerializeField, LabelText("Damage Position")]
+    private Transform _trans_WeaponDamagePosition;
+
+    [SerializeField, LabelText("Damage Area Size")]
+    private Vector3 _vect_WeaponDamageSize;
+
+    [SerializeField, LabelText("Debug Damage Area")]
+    private bool _bDebugDamageArea;
+
     protected Animator _animator;
     protected PlayerInputActions _inputActions;
 
@@ -123,7 +132,15 @@ public class PlayerWeaponHandler : MonoBehaviour
 
     protected virtual void Attack()
     {
+        Collider[] hitColliders = Physics.OverlapBox(_trans_WeaponDamagePosition.position, _vect_WeaponDamageSize / 2, Quaternion.identity);
 
+        for (int i = 0; i < hitColliders.Length; ++i)
+        {
+            if (hitColliders[i].transform.tag == "Enemy")
+            {
+                hitColliders[i].GetComponent<UnitController>().TakeDamage(_weapon_Current.damage);
+            }
+        }
     }
 
     private void Start()
@@ -136,4 +153,12 @@ public class PlayerWeaponHandler : MonoBehaviour
         UpdateObject();
     }
 
+
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+
+        if (_bDebugDamageArea)
+            Gizmos.DrawWireCube(_trans_WeaponDamagePosition.position, _vect_WeaponDamageSize);
+    }
 }

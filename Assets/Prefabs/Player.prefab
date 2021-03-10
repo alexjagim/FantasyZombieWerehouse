@@ -64,6 +64,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5343631826643296505}
+  - {fileID: 5039128794521107531}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -147,6 +148,9 @@ MonoBehaviour:
   _weapons_Equipped:
   - {fileID: 11400000, guid: 65f83c36fe5ad6c459f13ec4556f6d31, type: 2}
   _trans_WeaponSpawnParent: {fileID: 4942553657898725017}
+  _trans_WeaponDamagePosition: {fileID: 5039128794521107531}
+  _vect_WeaponDamageSize: {x: 2.5, y: 0.5, z: 1.5}
+  _bDebugDamageArea: 0
   _trans_SecondaryWeaponSpawnParent: {fileID: 9191976478375866837}
 --- !u!114 &1430742972
 MonoBehaviour:
@@ -190,6 +194,36 @@ Transform:
   m_Father: {fileID: 5343631826643202037}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 90, y: 180, z: 0}
+--- !u!1 &8123690148372939886
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5039128794521107531}
+  m_Layer: 0
+  m_Name: DamagePosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5039128794521107531
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8123690148372939886}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 2, z: 1.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5343631827246554779}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1350270224398274132
 PrefabInstance:
   m_ObjectHideFlags: 0

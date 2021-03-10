@@ -7,6 +7,7 @@ public class PlayerDuelWeaponHandler : PlayerWeaponHandler
 {
     private Dictionary<int, GameObject> _weapons_SecondaryEquipped;
 
+    [Title("Secondary Weapon Variables")]
     [SerializeField, LabelText("Secondary Weapon Spawn Parent")]
     private Transform _trans_SecondaryWeaponSpawnParent;
 
