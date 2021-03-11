@@ -45,26 +45,4 @@ public class PlayerDuelWeaponHandler : PlayerWeaponHandler
             _weapons_SecondaryEquipped[_iWeaponIndex].SetActive(true);
         }
     }
-
-    protected override void AnimationEquipWeapon()
-    {
-        
-    }
-
-    protected override void AnimationUnequipWeapon()
-    {
-        
-    }
-
-    protected override bool CanAttack()
-    {
-        return _inputActions.Player.Attack.triggered;
-    }
-
-    protected override void Attack()
-    {
-        base.Attack();
-
-        _animator.SetTrigger(_weapon_Current.sAnimationToggle);
-    }
 }
