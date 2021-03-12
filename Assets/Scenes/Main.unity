@@ -404,6 +404,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 45, y: 180, z: 0}
+--- !u!4 &1264381581 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6107364190088534043, guid: 77e20cec3dba4b74da2c021839756749, type: 3}
+  m_PrefabInstance: {fileID: 1364016227803549516}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1430742967 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5343631827246554779, guid: f22c00f232e341847a994989609be5e0, type: 3}
@@ -735,14 +740,42 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 45545641, guid: 77e20cec3dba4b74da2c021839756749, type: 3}
+      propertyPath: _bDebugDamageArea
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 45545641, guid: 77e20cec3dba4b74da2c021839756749, type: 3}
+      propertyPath: _weapons_Equipped.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 45545641, guid: 77e20cec3dba4b74da2c021839756749, type: 3}
+      propertyPath: _weapons_Equipped.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 95449751d9437c241abfc3494583d01c, type: 2}
     - target: {fileID: 474070324882570008, guid: 77e20cec3dba4b74da2c021839756749, type: 3}
       propertyPath: m_Name
       value: Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 1364016227803549522, guid: 77e20cec3dba4b74da2c021839756749, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2612518092423914067, guid: 77e20cec3dba4b74da2c021839756749, type: 3}
+      propertyPath: _bDebugDamageArea
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2612518092423914067, guid: 77e20cec3dba4b74da2c021839756749, type: 3}
+      propertyPath: _trans_WeaponDamagePosition
+      value: 
+      objectReference: {fileID: 1264381581}
     - target: {fileID: 7421431462096698830, guid: 77e20cec3dba4b74da2c021839756749, type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 1430742967}
+    - target: {fileID: 7421431462096698830, guid: 77e20cec3dba4b74da2c021839756749, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8249461883991599079, guid: 77e20cec3dba4b74da2c021839756749, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -848,5 +881,9 @@ PrefabInstance:
       propertyPath: _gameManager
       value: 
       objectReference: {fileID: 1994694345}
+    - target: {fileID: 6214896487973385834, guid: f22c00f232e341847a994989609be5e0, type: 3}
+      propertyPath: _fDamageAnimationDelay
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f22c00f232e341847a994989609be5e0, type: 3}

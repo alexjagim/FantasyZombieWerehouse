@@ -3,86 +3,30 @@ using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
 
-public class PlayerHumanoidController : PlayerController
+public class PlayerHumanoidController : HumanoidController
 {
-    [SerializeField, LabelText("Rigidbody"), BoxGroup("Components")]
-    private Rigidbody _rigidbody;
-    [SerializeField, LabelText("Animator"), BoxGroup("Components")]
-    private Animator _animator;
+    protected PlayerInputActions _inputActions;
 
-    [SerializeField, Required("Game Manager needed for Player Controller"), BoxGroup("Components")]
-    private GameManager _gameManager;
-
-    [SerializeField, LabelText("Locked on Enemy")]
-    private bool _bIsLockedOntoEnemy;
-
-    private bool _bCanMove;
-
-    public bool IsLockedOntoEnemy
+    protected override void InitInputActions()
     {
-        private set
-        {
-            _bIsLockedOntoEnemy = value;
-        }
-        get
-        {
-            return _bIsLockedOntoEnemy;
-        }
+        base.InitInputActions();
+
+        _inputActions = new PlayerInputActions();
     }
 
-    public bool CanMove
+    public PlayerInputActions GetInputActions()
     {
-        get
-        {
-            return _bCanMove;
-        }
-        set
-        {
-            _bCanMove = value;
-        }
+        return _inputActions;
     }
 
-    protected override void InitVariables()
+    private void OnEnable()
     {
-        base.InitVariables();
-
-        if (_rigidbody == null)
-        {
-            _rigidbody = GetComponent<Rigidbody>();
-        }
-
-        if (_animator == null)
-        {
-            _animator = GetComponent<Animator>();
-        }
-
-        if (_gameManager == null)
-        {
-            _gameManager = FindObjectOfType<GameManager>();
-        }
-
-        IsLockedOntoEnemy = false;
-        CanMove = true;
+        _inputActions.Enable();
     }
 
-    public GameManager GetGameManager()
+    private void OnDisable()
     {
-        return _gameManager;
-    }
-
-    public Rigidbody GetRigidbody()
-    {
-        return _rigidbody;
-    }
-
-    public Animator GetAnimator()
-    {
-        return _animator;
-    }
-
-    public void ToggleIsLockedOntoEnemy()
-    {
-        IsLockedOntoEnemy = !IsLockedOntoEnemy;
+        _inputActions.Disable();
     }
 
     protected override void DestroyUnit()

@@ -4,7 +4,7 @@ using System;
 using UnityEngine;
 using Sirenix.OdinInspector;
 
-public class AIController : UnitController
+public class AIHumanoidController : HumanoidController
 {
 
 }

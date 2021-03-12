@@ -34,7 +34,7 @@ public class UnitWeaponHandler : MonoBehaviour
 
     protected virtual void InstantiateVariables()
     {
-        _animator = GetComponent<PlayerHumanoidController>().GetAnimator();
+        _animator = GetComponent<HumanoidController>().GetAnimator();
 
         _list_weapons = new List<GameObject>();
 
@@ -55,7 +55,16 @@ public class UnitWeaponHandler : MonoBehaviour
 
     protected virtual void InstantiateWeapon(int index)
     {
-        GameObject temp = Instantiate(_weapons_Equipped[index].prefab);
+        GameObject temp;
+
+        if (_weapons_Equipped[index].prefab != null)
+        {
+            temp = Instantiate(_weapons_Equipped[index].prefab);
+        }
+        else
+        {
+            temp = new GameObject();
+        }
 
         temp.transform.parent = _trans_WeaponSpawnParent;
         temp.transform.localPosition = new Vector3(0, 0, 0);
@@ -120,10 +129,7 @@ public class UnitWeaponHandler : MonoBehaviour
 
     protected virtual void UpdateObject()
     {
-        if (CanAttack())
-        {
-            Attack();
-        }
+        TriggerAttack();
     }
 
     protected virtual bool CanAttack()
@@ -134,6 +140,14 @@ public class UnitWeaponHandler : MonoBehaviour
     protected virtual void Attack()
     {
         _animator.SetTrigger(_weapon_Current.sAnimationToggle);
+    }
+
+    public void TriggerAttack()
+    {
+        if (CanAttack())
+        {
+            Attack();
+        }
     }
 
     private void Start()

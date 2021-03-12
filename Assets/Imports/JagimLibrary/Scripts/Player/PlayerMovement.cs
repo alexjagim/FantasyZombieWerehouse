@@ -12,14 +12,14 @@ public class PlayerMovement : UnitMovement
     {
         base.InitController();
 
-        _controller = GetComponent<PlayerController>();
+        _controller = GetComponent<HumanoidController>();
     }
 
     protected override void InitVariables()
     {
         base.InitVariables();
 
-        _inputActions = (_controller as PlayerController).GetInputActions();
+        _inputActions = (_controller as PlayerHumanoidController).GetInputActions();
         _rigidbody = GetComponent<Rigidbody>();
     }
 }

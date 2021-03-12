@@ -12,6 +12,6 @@ public class AttackAction : AIAction
 
     private void Attack(StateController controller)
     {
-
+        controller.GetComponent<AIWeaponHandler>().TriggerAttack();
     }
 }

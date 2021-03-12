@@ -93,7 +93,7 @@ public class UnitController : MonoBehaviour
         Destroy(gameObject);
     }
 
-    IEnumerator FlashObject(SkinnedMeshRenderer toFlash, Material originalMaterial, Material flashMaterial, float flashTime, float flashDelay)
+    private IEnumerator FlashObject(SkinnedMeshRenderer toFlash, Material originalMaterial, Material flashMaterial, float flashTime, float flashDelay)
     {
         float flashingFor = 0;
         Material newColor = flashMaterial;

@@ -9,7 +9,7 @@ public class AIStateController : StateController
     public Transform player;
 
     [HideInInspector]
-    public AIController enemyController;
+    public AIHumanoidController enemyController;
     [HideInInspector]
     public NavMeshAgent navMeshAgent;
 
@@ -19,7 +19,7 @@ public class AIStateController : StateController
     {
         base.SetupAI();
 
-        enemyController = GetComponent<AIController>();
+        enemyController = GetComponent<AIHumanoidController>();
         navMeshAgent = GetComponent<NavMeshAgent>();
     }
 
