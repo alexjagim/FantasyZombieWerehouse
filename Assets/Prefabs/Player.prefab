@@ -110,9 +110,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _iCurrentHealth: 0
-  _iMaxHealth: 0
+  _iMaxHealth: 10
   _iCurrentStamina: 0
   _iMaxStamina: 0
+  _skinnedMeshRenderer: {fileID: 5343631826640396523}
+  _material_Damage: {fileID: 2100000, guid: 7fed353a63d9b264bad2d0c8c8c4de71, type: 2}
+  _fDamageAnimationDelay: 0.25
+  _fDamageAnimationDuration: 0.25
   _rigidbody: {fileID: 1430742970}
   _animator: {fileID: 5343631826635998747}
   _gameManager: {fileID: 0}
@@ -151,6 +155,7 @@ MonoBehaviour:
   _trans_WeaponDamagePosition: {fileID: 5039128794521107531}
   _vect_WeaponDamageSize: {x: 2.5, y: 0.5, z: 1.5}
   _bDebugDamageArea: 0
+  _bNextWeaponToggleEnabled: 0
   _trans_SecondaryWeaponSpawnParent: {fileID: 9191976478375866837}
 --- !u!114 &1430742972
 MonoBehaviour:
@@ -303,5 +308,10 @@ Transform:
 --- !u!4 &5343631826643234873 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6383143599550332525, guid: ec8cb55dea48599499f357baa1e2b608, type: 3}
+  m_PrefabInstance: {fileID: 1350270224398274132}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &5343631826640396523 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 6383143599547395775, guid: ec8cb55dea48599499f357baa1e2b608, type: 3}
   m_PrefabInstance: {fileID: 1350270224398274132}
   m_PrefabAsset: {fileID: 0}

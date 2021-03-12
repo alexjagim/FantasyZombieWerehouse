@@ -81,6 +81,10 @@ MonoBehaviour:
   _iMaxHealth: 10
   _iCurrentStamina: 0
   _iMaxStamina: 0
+  _skinnedMeshRenderer: {fileID: 1054861863235075091}
+  _material_Damage: {fileID: 2100000, guid: 35576c6f9753d07458d81d821703bf11, type: 2}
+  _fDamageAnimationDelay: 0.25
+  _fDamageAnimationDuration: 0.25
 --- !u!114 &7421431462096698830
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -88,7 +92,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 474070324882570008}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cc065dd5a2ccce646b52b9d71311d8b9, type: 3}
   m_Name: 
@@ -106,7 +110,7 @@ NavMeshAgent:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 474070324882570008}
-  m_Enabled: 1
+  m_Enabled: 0
   m_AgentTypeID: 0
   m_Radius: 0.5
   m_Speed: 3.5
@@ -190,5 +194,10 @@ Transform:
 --- !u!95 &1054861863239071923 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 4155705510709026105, guid: 3eb535a4382f6cc4590204bd48dd424e, type: 3}
+  m_PrefabInstance: {fileID: 3967556245804115338}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &1054861863235075091 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 4155705510704896409, guid: 3eb535a4382f6cc4590204bd48dd424e, type: 3}
   m_PrefabInstance: {fileID: 3967556245804115338}
   m_PrefabAsset: {fileID: 0}
