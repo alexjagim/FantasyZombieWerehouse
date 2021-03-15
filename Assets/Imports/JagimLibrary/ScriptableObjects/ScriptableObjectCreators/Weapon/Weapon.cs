@@ -11,13 +11,27 @@ public class Weapon : ScriptableObject
     [BoxGroup("Base Properties")]
     public GameObject prefab;
 
-    [BoxGroup("Base Properties")]
+    [LabelText("Attack Speed (per sec)"), LabelWidth(135), BoxGroup("Base Properties")]
     public float attackSpeed;
     [BoxGroup("Base Properties")]
     public int damage;
 
     [LabelText("Animation Toggle"), BoxGroup("Base Properties")]
     public string sAnimationToggle;
+
+    [BoxGroup("Base Properties"), LabelWidth(145)]
+    public bool canRotateDuringAttack;
+    [BoxGroup("Base Properties"), LabelWidth(145)]
+    public bool canMoveDuringAttack;
+
+    [BoxGroup("Base Properties")]
+    public bool knockbackEffect;
+
+    [BoxGroup("Base Properties"), ShowIf("knockbackEffect")]
+    public float knockbackForce;
+
+    [BoxGroup("Base Properties"), ShowIf("knockbackEffect")]
+    public float knockbackDistance;
 
     [LabelText("Head Horizontal Rotation"), Range(-1, 1), BoxGroup("Base Properties")]
     public float fHeadHorizontalRotation;

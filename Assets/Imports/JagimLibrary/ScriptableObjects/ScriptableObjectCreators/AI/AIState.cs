@@ -7,6 +7,7 @@ public class AIState : ScriptableObject
 {
     public AIAction[] actions;
     public AITransition[] transitions;
+    public AIAction[] exitStateActions;
     
     public void UpdateState(StateController controller)
     {
@@ -19,6 +20,14 @@ public class AIState : ScriptableObject
         for (int i = 0; i < actions.Length; ++i)
         {
             actions[i].Act(controller);
+        }
+    }
+
+    public void DoExitStateActions(StateController controller)
+    {
+        for (int i = 0; i < exitStateActions.Length; ++i)
+        {
+            exitStateActions[i].Act(controller);
         }
     }
 

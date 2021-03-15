@@ -6,7 +6,7 @@ using Sirenix.OdinInspector;
 public class HumanoidController : UnitController
 {
     [SerializeField, LabelText("Rigidbody"), BoxGroup("Components")]
-    private Rigidbody _rigidbody;
+    protected Rigidbody _rigidbody;
     [SerializeField, LabelText("Animator"), BoxGroup("Components")]
     private Animator _animator;
 
@@ -17,6 +17,7 @@ public class HumanoidController : UnitController
     private bool _bIsLockedOntoEnemy;
 
     private bool _bCanMove;
+    private bool _bCanRotate;
 
     public bool IsLockedOntoEnemy
     {
@@ -42,6 +43,18 @@ public class HumanoidController : UnitController
         }
     }
 
+    public bool CanRotate
+    {
+        get
+        {
+            return _bCanRotate;
+        }
+        set
+        {
+            _bCanRotate = value;
+        }
+    }
+
     protected override void InitVariables()
     {
         base.InitVariables();
@@ -62,7 +75,8 @@ public class HumanoidController : UnitController
         }
 
         IsLockedOntoEnemy = false;
-        CanMove = true;
+        _bCanMove = true;
+        _bCanRotate = true;
     }
 
     public GameManager GetGameManager()

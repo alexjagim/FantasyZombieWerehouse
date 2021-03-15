@@ -14,9 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Sword and Shield
   prefab: {fileID: 7811675851310572638, guid: ad1495daa126ea7459a881caa0b3c81d, type: 3}
-  attackSpeed: 1
+  attackSpeed: 0.75
   damage: 1
   sAnimationToggle: Attack
+  canRotateDuringAttack: 0
+  canMoveDuringAttack: 0
+  knockbackEffect: 1
+  knockbackForce: 1500
+  knockbackDistance: 5
   fHeadHorizontalRotation: 0
   fBodyHorizontalRotation: 0
   prefab_secondary: {fileID: 7139381039727924554, guid: cdd70e1863029674dafd2aa60e39f261, type: 3}

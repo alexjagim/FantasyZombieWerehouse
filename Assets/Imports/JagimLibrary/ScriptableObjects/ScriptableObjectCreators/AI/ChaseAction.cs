@@ -13,5 +13,6 @@ public class ChaseAction : AIAction
     private void Chase(StateController controller)
     {
         (controller as AIStateController).navMeshAgent.destination = (controller as AIStateController).player.position;
+        (controller as AIStateController).LastKnownPositionOfTarget = (controller as AIStateController).player.position;
     }
 }

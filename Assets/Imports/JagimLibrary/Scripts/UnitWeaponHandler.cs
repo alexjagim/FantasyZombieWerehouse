@@ -32,9 +32,15 @@ public class UnitWeaponHandler : MonoBehaviour
 
     protected int _iWeaponIndex;
 
+    protected bool _bCurrentlyAttacking;
+
+    protected HumanoidController _humanoidController;
+
     protected virtual void InstantiateVariables()
     {
-        _animator = GetComponent<HumanoidController>().GetAnimator();
+        _humanoidController = GetComponent<HumanoidController>();
+
+        _animator = _humanoidController.GetAnimator();
 
         _list_weapons = new List<GameObject>();
 
@@ -134,11 +140,13 @@ public class UnitWeaponHandler : MonoBehaviour
 
     protected virtual bool CanAttack()
     {
-        return false;
+        return !_bCurrentlyAttacking;
     }
 
     protected virtual void Attack()
     {
+        StartCoroutine(SetAttacking(1 / _weapon_Current.attackSpeed));
+
         _animator.SetTrigger(_weapon_Current.sAnimationToggle);
     }
 
@@ -160,6 +168,30 @@ public class UnitWeaponHandler : MonoBehaviour
         UpdateObject();
     }
 
+    protected IEnumerator SetAttacking(float fDuration)
+    {
+        _bCurrentlyAttacking = true;
+
+        bool bMoveTemp = _humanoidController.CanMove;
+        bool bRotateTemp = _humanoidController.CanRotate;
+
+        if (bMoveTemp)
+        {
+            _humanoidController.CanMove = _weapon_Current.canMoveDuringAttack;
+        }
+
+        if (bRotateTemp)
+        {
+            _humanoidController.CanRotate = _weapon_Current.canMoveDuringAttack;
+        }
+
+        yield return new WaitForSeconds(fDuration);
+
+        _humanoidController.CanMove = bMoveTemp;
+        _humanoidController.CanRotate = bRotateTemp;
+
+        _bCurrentlyAttacking = false;
+    }
 
     void OnDrawGizmos()
     {

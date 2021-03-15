@@ -9,7 +9,7 @@ public class StateController : MonoBehaviour
     public AIState currentState;
     public AIState remainState; 
 
-    private bool aiActive = true;
+    protected bool aiActive = true;
 
     private void Awake()
     {
@@ -31,13 +31,8 @@ public class StateController : MonoBehaviour
     {
         if (nextState != remainState)
         {
+            currentState.DoExitStateActions(this);
             currentState = nextState;
-            OnExitState();
         }
-    }
-
-    protected virtual void OnExitState()
-    {
-
     }
 }

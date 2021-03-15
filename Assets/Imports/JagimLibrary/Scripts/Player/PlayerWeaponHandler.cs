@@ -19,7 +19,7 @@ public class PlayerWeaponHandler : UnitWeaponHandler
 
     protected override bool CanAttack()
     {
-        return _inputActions.Player.Attack.triggered;
+        return _inputActions.Player.Attack.triggered && base.CanAttack();
     }
 
     protected override void Attack()
@@ -33,6 +33,11 @@ public class PlayerWeaponHandler : UnitWeaponHandler
             if (hitColliders[i].transform.tag == "Enemy")
             {
                 hitColliders[i].GetComponent<UnitController>().TakeDamage(_weapon_Current.damage);
+
+                if (_weapon_Current.knockbackEffect)
+                {
+                    hitColliders[i].GetComponent<AIHumanoidController>().BeKnockedBack(this.transform, _weapon_Current.knockbackDistance, _weapon_Current.knockbackForce);
+                }
             }
         }
     }

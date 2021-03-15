@@ -5,7 +5,6 @@ using Sirenix.OdinInspector;
 
 public class AIWeaponHandler : UnitWeaponHandler
 {
-    private bool _bCurrentlyAttacking;
     private bool _bAttackState;
 
     protected override void InstantiateVariables()
@@ -28,22 +27,11 @@ public class AIWeaponHandler : UnitWeaponHandler
                 hitColliders[i].GetComponent<UnitController>().TakeDamage(_weapon_Current.damage);
             }
         }
-
-        StartCoroutine(SetAttacking(1 / _weapon_Current.attackSpeed));
     }
 
     protected override bool CanAttack()
     {
         return !_bCurrentlyAttacking && _bAttackState;
-    }
-
-    private IEnumerator SetAttacking(float fDuration)
-    {
-        _bCurrentlyAttacking = true;
-
-        yield return new WaitForSeconds(fDuration);
-
-        _bCurrentlyAttacking = false;
     }
 
     public void SetAttackState(bool bAttacking)

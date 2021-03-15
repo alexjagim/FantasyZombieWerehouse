@@ -19,7 +19,7 @@ public class PlayerLookTowardKeyMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (_playerController.CanMove)
+        if (_playerController.CanRotate)
         {
             _movementInputVector = _inputActions.Player.Move.ReadValue<Vector2>();
 

@@ -32,6 +32,20 @@ public class UnitController : MonoBehaviour
 
     public event Action action_OnDestroy;
 
+    private bool _bKnockedBack;
+
+    protected bool KnockedBack
+    {
+        get
+        {
+            return _bKnockedBack;
+        }
+        set
+        {
+            _bKnockedBack = value;
+        }
+    }
+
     private void Awake()
     {
         InitInputActions();
@@ -51,6 +65,7 @@ public class UnitController : MonoBehaviour
     {
         _iCurrentHealth = _iMaxHealth;
         _material_Original = _skinnedMeshRenderer.material;
+        _bKnockedBack = false;
     }
 
     public void TakeDamage(int iDamage)
@@ -60,6 +75,16 @@ public class UnitController : MonoBehaviour
         //Clears out in the attack happens again before the damage flash is complete
         StopCoroutine("FlashObject");
         StartCoroutine(FlashObject(_skinnedMeshRenderer, _material_Original, _material_Damage, _fDamageAnimationDuration, _fDamageAnimationDelay));
+    }
+
+    public virtual void BeKnockedBack(Transform trans, float fDistance, float fForce)
+    {
+        _bKnockedBack = true;
+    }
+
+    protected virtual void UpdateKnockBack()
+    {
+        _bKnockedBack = false;
     }
 
     protected virtual void DamageAnimation()
@@ -84,7 +109,10 @@ public class UnitController : MonoBehaviour
 
     protected virtual void UpdateObject()
     {
-
+        if (_bKnockedBack)
+        {
+            UpdateKnockBack();
+        }
     }
 
     protected virtual void DestroyUnit()
