@@ -31,6 +31,7 @@ public class StateController : MonoBehaviour
     {
         if (nextState != remainState)
         {
+            Debug.Log("State End");
             currentState.DoExitStateActions(this);
             currentState = nextState;
         }
