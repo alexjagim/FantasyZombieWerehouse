@@ -6,6 +6,7 @@ using UnityEngine;
 public class AIState : ScriptableObject
 {
     public AIAction[] actions;
+    public AnimationAction[] animationActions;
     public AITransition[] transitions;
     public AIAction[] exitStateActions;
     
@@ -20,6 +21,14 @@ public class AIState : ScriptableObject
         for (int i = 0; i < actions.Length; ++i)
         {
             actions[i].Act(controller);
+        }
+    }
+
+    public void DoAnimationActions(StateController controller)
+    {
+        for (int i = 0; i < animationActions.Length; ++i)
+        {
+            animationActions[i].Act(controller);
         }
     }
 

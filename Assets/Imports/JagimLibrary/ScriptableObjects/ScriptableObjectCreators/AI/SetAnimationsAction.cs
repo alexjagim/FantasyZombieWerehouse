@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
 
-[CreateAssetMenu(menuName = "PluggableAI/Actions/SetAnimations")]
-public class SetAnimationsAction : AIAction
+[CreateAssetMenu(menuName = "PluggableAI/Actions/Animations/SetAnimations")]
+public class SetAnimationsAction : AnimationAction
 {
     public List<AnimationParameterInfo> _list_Animations;
 

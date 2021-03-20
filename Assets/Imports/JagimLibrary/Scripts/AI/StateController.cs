@@ -20,6 +20,11 @@ public class StateController : MonoBehaviour
     {
     }
 
+    private void Start()
+    {
+        currentState.DoAnimationActions(this);
+    }
+
     public void Update()
     {
         if (!aiActive)
@@ -34,6 +39,7 @@ public class StateController : MonoBehaviour
             Debug.Log("State End");
             currentState.DoExitStateActions(this);
             currentState = nextState;
+            currentState.DoAnimationActions(this);
         }
     }
 }

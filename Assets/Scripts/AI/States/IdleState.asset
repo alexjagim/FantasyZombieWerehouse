@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: IdleState
   m_EditorClassIdentifier: 
   actions: []
+  animationActions:
+  - {fileID: 11400000, guid: b79769a528b8d534e856a8d6ed52fbae, type: 2}
   transitions:
   - decision: {fileID: 11400000, guid: a46ddd5a3cfe344449d74cfcf66c770b, type: 2}
     trueState: {fileID: 11400000, guid: ee8ee1fb883daeb46a158ab954ae1d99, type: 2}

@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ed98eeb8dfc49b4899cb05b5faf5707, type: 3}
   m_Name: SearchAnimationState
   m_EditorClassIdentifier: 
-  actions:
+  actions: []
+  animationActions:
   - {fileID: 11400000, guid: b79769a528b8d534e856a8d6ed52fbae, type: 2}
   - {fileID: 11400000, guid: 420de8b1c47d14d46a82a9c88bd9c5da, type: 2}
   transitions:
