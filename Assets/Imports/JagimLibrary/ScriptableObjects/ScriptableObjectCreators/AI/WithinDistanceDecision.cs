@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
 
-[CreateAssetMenu(menuName = "PluggableAI/Decisions/WithinDistance")]
+[CreateAssetMenu(menuName = "Pluggable/AI/Decisions/WithinDistance")]
 public class WithinDistanceDecision : AIDecision
 {
     [LabelText("Distance")]

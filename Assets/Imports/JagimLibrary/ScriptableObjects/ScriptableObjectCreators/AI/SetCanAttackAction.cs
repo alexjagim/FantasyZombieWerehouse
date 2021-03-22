@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
 
-[CreateAssetMenu(menuName = "PluggableAI/Actions/SetCanAttack")]
+[CreateAssetMenu(menuName = "Pluggable/AI/Actions/SetCanAttack")]
 public class SetCanAttackAction : AIAction
 {
     [SerializeField, LabelText("Can Attack")]

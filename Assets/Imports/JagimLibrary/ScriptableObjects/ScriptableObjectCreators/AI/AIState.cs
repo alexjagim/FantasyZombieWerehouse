@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "PluggableAI/State")]
+[CreateAssetMenu(menuName = "Pluggable/AI/State")]
 public class AIState : ScriptableObject
 {
     public AIAction[] actions;
@@ -28,7 +28,7 @@ public class AIState : ScriptableObject
     {
         for (int i = 0; i < animationActions.Length; ++i)
         {
-            animationActions[i].Act(controller);
+            animationActions[i].Act(controller.animator);
         }
     }
 

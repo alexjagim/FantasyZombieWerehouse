@@ -27,8 +27,6 @@ public class AIStateController : StateController
     [HideInInspector]
     public NavMeshAgent navMeshAgent;
 
-    public Animator animator;
-
     public void SetAIActive(bool bActive)
     {
         aiActive = bActive;

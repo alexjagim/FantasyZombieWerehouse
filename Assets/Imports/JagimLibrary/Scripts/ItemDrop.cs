@@ -15,7 +15,7 @@ public class ItemDrop : MonoBehaviour
     {
         DetermineItemDrop();
 
-        GetComponent<AIHumanoidController>().action_OnDestroy += DropItem;
+        GetComponent<AIHumanoidController>().actions_OnDestroy += DropItem;
     }
 
     private void DetermineItemDrop()

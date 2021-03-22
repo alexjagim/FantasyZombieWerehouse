@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d43891e53b770844a9988028728577f6, type: 3}
+  m_Name: ShieldBlock
+  m_EditorClassIdentifier: 
+  icon: {fileID: 0}
+  cooldownTime: 0
+  effectsToSelf:
+  - {fileID: 11400000, guid: fbebf1ddd9625904c868913579c2a2e5, type: 2}
+  effectsToOthers: []
+  animationTriggers:
+  - {fileID: 11400000, guid: 54f7bcae12ca91c4c95bd250194b8309, type: 2}
+  inputName: Block
+  input:
+    m_Name: Input
+    m_Type: 1
+    m_ExpectedControlType: Button
+    m_Id: 6b0dc126-78f8-4d40-bcb6-c8d0a68d7978
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 1640cbe8-ab06-4cbc-88a3-f624cdd012fb
+      m_Path: <Keyboard>/e
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Input
+      m_Flags: 0

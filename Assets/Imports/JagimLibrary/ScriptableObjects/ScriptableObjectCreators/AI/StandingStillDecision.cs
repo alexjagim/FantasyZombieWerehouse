@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-[CreateAssetMenu(menuName = "PluggableAI/Decisions/StandingStill")]
+[CreateAssetMenu(menuName = "Pluggable/AI/Decisions/StandingStill")]
 public class StandingStillDecision : AIDecision
 {
     public override bool Decide(StateController controller)

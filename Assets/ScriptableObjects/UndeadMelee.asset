@@ -15,9 +15,12 @@ MonoBehaviour:
   name: Undead Melee
   prefab: {fileID: 0}
   attackSpeed: 1
-  damage: 1
+  damage: 2
   sAnimationToggle: Attack
   canRotateDuringAttack: 1
   canMoveDuringAttack: 1
+  knockbackEffect: 0
+  knockbackForce: 0
+  knockbackDistance: 0
   fHeadHorizontalRotation: 0
   fBodyHorizontalRotation: 0

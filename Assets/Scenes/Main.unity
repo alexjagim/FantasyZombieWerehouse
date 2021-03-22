@@ -837,6 +837,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4340752815784493372, guid: f22c00f232e341847a994989609be5e0, type: 3}
+      propertyPath: abilities.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4340752815784493372, guid: f22c00f232e341847a994989609be5e0, type: 3}
+      propertyPath: abilities.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 5487cb33849aedd41afc69aea88fbd1c, type: 2}
     - target: {fileID: 5343631827246554778, guid: f22c00f232e341847a994989609be5e0, type: 3}
       propertyPath: m_Name
       value: Player

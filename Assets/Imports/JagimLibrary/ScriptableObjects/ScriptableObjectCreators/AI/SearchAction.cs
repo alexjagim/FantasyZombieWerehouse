@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "PluggableAI/Actions/Serach")]
+[CreateAssetMenu(menuName = "Pluggable/AI/Actions/Serach")]
 public class SearchAction : AIAction
 {
     public override void Act(StateController controller)

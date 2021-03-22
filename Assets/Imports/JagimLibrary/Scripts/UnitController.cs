@@ -30,9 +30,11 @@ public class UnitController : MonoBehaviour
     [SerializeField, LabelText("Animation Duration"), BoxGroup("Base Variables")]
     private float _fDamageAnimationDuration;
 
-    public event Action action_OnDestroy;
+    public event Action actions_OnDestroy;
+    public event Action<UnitController> actions_OnHit;
 
     private bool _bKnockedBack;
+    private float _fTempDamageModifier;
 
     protected bool KnockedBack
     {
@@ -66,15 +68,18 @@ public class UnitController : MonoBehaviour
         _iCurrentHealth = _iMaxHealth;
         _material_Original = _skinnedMeshRenderer.material;
         _bKnockedBack = false;
+        _fTempDamageModifier = 1.0f;
     }
 
     public void TakeDamage(int iDamage)
     {
-        _iCurrentHealth -= iDamage;
+        actions_OnHit?.Invoke(this);
 
-        //Clears out in the attack happens again before the damage flash is complete
-        StopCoroutine("FlashObject");
-        StartCoroutine(FlashObject(_skinnedMeshRenderer, _material_Original, _material_Damage, _fDamageAnimationDuration, _fDamageAnimationDelay));
+        _iCurrentHealth -= Mathf.FloorToInt(iDamage * _fTempDamageModifier);
+
+        _fTempDamageModifier = 1.0f;
+
+        DamageAnimation();
     }
 
     public virtual void BeKnockedBack(Transform trans, float fDistance, float fForce)
@@ -89,7 +94,9 @@ public class UnitController : MonoBehaviour
 
     protected virtual void DamageAnimation()
     {
-        //FlashObject(_skinnedMeshRenderer, _material_Original, _material_Damage, 1.0f, 1.0f);
+        //Clears out in the attack happens again before the damage flash is complete
+        StopCoroutine("FlashObject");
+        StartCoroutine(FlashObject(_skinnedMeshRenderer, _material_Original, _material_Damage, _fDamageAnimationDuration, _fDamageAnimationDelay));
     }
 
     public int GetCurrentHealth()
@@ -117,7 +124,7 @@ public class UnitController : MonoBehaviour
 
     protected virtual void DestroyUnit()
     {
-        action_OnDestroy?.Invoke();
+        actions_OnDestroy?.Invoke();
         Destroy(gameObject);
     }
 
@@ -134,5 +141,10 @@ public class UnitController : MonoBehaviour
         yield return new WaitForSeconds(flashTime);
 
         toFlash.material = originalMaterial;
+    }
+
+    public void SetDamageModifer(float fAmount)
+    {
+        _fTempDamageModifier = fAmount;
     }
 }

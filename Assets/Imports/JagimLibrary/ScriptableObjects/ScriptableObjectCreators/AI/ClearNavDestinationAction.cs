@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-[CreateAssetMenu(menuName = "PluggableAI/Actions/ClearNavDestination")]
+[CreateAssetMenu(menuName = "Pluggable/AI/Actions/ClearNavDestination")]
 public class ClearNavDestinationAction : AIAction
 {
     public override void Act(StateController controller)

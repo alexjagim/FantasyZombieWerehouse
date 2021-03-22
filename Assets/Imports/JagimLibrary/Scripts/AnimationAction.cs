@@ -4,5 +4,5 @@ using UnityEngine;
 
 public abstract class AnimationAction : ScriptableObject
 {
-    public abstract void Act(StateController controller);
+    public abstract void Act(Animator animator);
 }
