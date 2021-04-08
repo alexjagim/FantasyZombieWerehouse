@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c26daafe89d4b834688adf3adfe839b6, type: 3}
+  m_Name: ShieldBlockToggle
+  m_EditorClassIdentifier: 
+  icon: {fileID: 0}
+  cooldownTime: 2
+  effectsToSelf:
+  - {fileID: 11400000, guid: fbebf1ddd9625904c868913579c2a2e5, type: 2}
+  - {fileID: 11400000, guid: 457e27f01f252c6469f7bfa7c6346f1d, type: 2}
+  effectsToOthers: []
+  animationTriggers:
+  - {fileID: 11400000, guid: 54f7bcae12ca91c4c95bd250194b8309, type: 2}
+  input:
+    m_Name: Interact
+    m_Type: 1
+    m_ExpectedControlType: Button
+    m_Id: f2340632-c2ed-4d2d-a1cf-c5be623adf1e
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+  animationTriggers_ToggleOff:
+  - {fileID: 11400000, guid: 378adca4dd9852748be873a1dfc957d0, type: 2}
+  effects_ToggleOff:
+  - {fileID: 11400000, guid: 9d6315e860d352447aa0c041e02c4b0c, type: 2}
+  iStaminaUsePerSecond: 4

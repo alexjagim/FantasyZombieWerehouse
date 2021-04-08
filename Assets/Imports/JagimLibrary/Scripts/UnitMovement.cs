@@ -13,6 +13,9 @@ public class UnitMovement : MonoBehaviour
     [SerializeField, BoxGroup("Base Variables"), LabelText("Current Speed"), ReadOnly]
     protected float fCurrentSpeed;
 
+    [HideInInspector]
+    public float fSpeedModifier = 1.0f;
+
     protected virtual void InitController()
     {
         _controller = new UnitController();

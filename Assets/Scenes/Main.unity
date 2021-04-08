@@ -844,7 +844,7 @@ PrefabInstance:
     - target: {fileID: 4340752815784493372, guid: f22c00f232e341847a994989609be5e0, type: 3}
       propertyPath: abilities.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: 5487cb33849aedd41afc69aea88fbd1c, type: 2}
+      objectReference: {fileID: 11400000, guid: 79fd1d1761c99f94c8be97dd68d68be9, type: 2}
     - target: {fileID: 5343631827246554778, guid: f22c00f232e341847a994989609be5e0, type: 3}
       propertyPath: m_Name
       value: Player
@@ -897,6 +897,14 @@ PrefabInstance:
       propertyPath: _gameManager
       value: 
       objectReference: {fileID: 1994694345}
+    - target: {fileID: 6214896487973385834, guid: f22c00f232e341847a994989609be5e0, type: 3}
+      propertyPath: _iMaxStamina
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6214896487973385834, guid: f22c00f232e341847a994989609be5e0, type: 3}
+      propertyPath: _fStaminaRegenSpeed
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6214896487973385834, guid: f22c00f232e341847a994989609be5e0, type: 3}
       propertyPath: _fDamageAnimationDelay
       value: 0.5

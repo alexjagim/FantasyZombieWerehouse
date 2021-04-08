@@ -10,21 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9537da71a180a0241ae0aac9901578ad, type: 3}
-  m_Name: StartWalkingAnimation
+  m_Name: StopBlockAnimation
   m_EditorClassIdentifier: 
   _list_Animations:
-  - sID: bWalking
+  - sID: bBlocking
     parameter: 4
-    fValue: 0
-    bValue: 1
-    iValue: 0
-  - sID: 
-    parameter: 0
     fValue: 0
     bValue: 0
     iValue: 0
-  - sID: 
-    parameter: 0
+  - sID: Body_Horizontal_f
+    parameter: 1
+    fValue: 0
+    bValue: 0
+    iValue: 0
+  - sID: Head_Horizontal_f
+    parameter: 1
     fValue: 0
     bValue: 0
     iValue: 0

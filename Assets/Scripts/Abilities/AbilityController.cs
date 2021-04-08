@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Sirenix.OdinInspector;
 
 public class AbilityController : MonoBehaviour
 {
@@ -8,19 +9,20 @@ public class AbilityController : MonoBehaviour
 
     public Animator animator;
 
-    [SerializeField]
+    [SerializeField, ReadOnly]
     private bool[] _bAbilitiesCanTrigger;
 
-    [SerializeField]
+    [SerializeField, ReadOnly]
+    private bool[] _bAbilitiesAreToggledOn;
+
+    [SerializeField, ReadOnly]
     private List<Effect> effects_onAttack;
-    [SerializeField]
+    [SerializeField, ReadOnly]
     private List<Effect> effects_onHit;
-    [SerializeField]
+    [SerializeField, ReadOnly]
     private List<Effect> effects_Continuous;
-    [SerializeField]
+    [SerializeField, ReadOnly]
     private List<Effect> effects_OnCollision;
-    [SerializeField]
-    private List<Effect> effects_Instant;
 
     private UnitController controller;
 
@@ -35,15 +37,16 @@ public class AbilityController : MonoBehaviour
         effects_onHit = new List<Effect>();
         effects_Continuous = new List<Effect>();
         effects_OnCollision = new List<Effect>();
-        effects_Instant = new List<Effect>();
 
         controller = GetComponent<UnitController>();
 
         _bAbilitiesCanTrigger = new bool[abilities.Count];
+        _bAbilitiesAreToggledOn = new bool[abilities.Count];
 
         for (int i = 0; i < _bAbilitiesCanTrigger.Length; ++i)
         {
             _bAbilitiesCanTrigger[i] = true;
+            _bAbilitiesAreToggledOn[i] = false;
         }
     }
 
@@ -110,7 +113,41 @@ public class AbilityController : MonoBehaviour
                 }
             case AbilitySystemEnums.EffectType.Instant:
                 {
-                    effects_Instant.Add(effect);
+                    effect.Act(controller);
+                    break;
+                }
+        }
+    }
+
+    public void RemoveEffect(Effect effect)
+    {
+        AbilitySystemEnums.EffectType type = effect.effectType;
+
+        switch (type)
+        {
+            case AbilitySystemEnums.EffectType.OnAttack:
+                {
+                    effects_onAttack.Remove(effect);
+                    break;
+                }
+            case AbilitySystemEnums.EffectType.OnHit:
+                {
+                    effects_onHit.Remove(effect);
+                    GetComponent<UnitController>().actions_OnHit -= effect.Act;
+                    break;
+                }
+            case AbilitySystemEnums.EffectType.Continuous:
+                {
+                    effects_Continuous.Remove(effect);
+                    break;
+                }
+            case AbilitySystemEnums.EffectType.OnCollision:
+                {
+                    effects_OnCollision.Remove(effect);
+                    break;
+                }
+            case AbilitySystemEnums.EffectType.Instant:
+                {
                     break;
                 }
         }
@@ -121,8 +158,29 @@ public class AbilityController : MonoBehaviour
         return _bAbilitiesCanTrigger[abilities.IndexOf(ability)];
     }
 
-    public IEnumerator StartCooldownTimer(Ability ability, float fCooldown)
+    public bool GetAbilityIsToggledOn(Ability ability)
     {
+        return _bAbilitiesAreToggledOn[abilities.IndexOf(ability)];
+    }
+
+    public void SetAbilityIsToggledOn(Ability ability, bool bToggledOn)
+    {
+        _bAbilitiesAreToggledOn[abilities.IndexOf(ability)] = bToggledOn;
+    }
+
+    public UnitController GetUnitController()
+    {
+        return controller;
+    }
+
+    public void StartCooldownTimer(Ability ability, float fCooldown)
+    {
+        StartCoroutine(StartCoroutineCooldownTimer(ability, fCooldown));
+    }
+
+    private IEnumerator StartCoroutineCooldownTimer(Ability ability, float fCooldown)
+    {
+        Debug.Log("Cooldown Timer Started");
         int iTriggerPosition = abilities.IndexOf(ability);
 
         _bAbilitiesCanTrigger[iTriggerPosition] = false;
@@ -130,5 +188,27 @@ public class AbilityController : MonoBehaviour
         yield return new WaitForSeconds(fCooldown);
 
         _bAbilitiesCanTrigger[iTriggerPosition] = true;
+    }
+
+    public void StartStaminaReductionTimer(Ability ability, int iAmountPerSecond)
+    {
+        StartCoroutine(StartCoroutineStaminaReductionTimer(ability, iAmountPerSecond));
+    }
+
+    private IEnumerator StartCoroutineStaminaReductionTimer(Ability ability, int iAmountPerSecond)
+    {
+        Debug.Log("Stamina Timer Started");
+        controller.ReduceStamina(iAmountPerSecond);
+
+        yield return new WaitForSeconds(1);
+
+        if (_bAbilitiesAreToggledOn[abilities.IndexOf(ability)] && controller.GetCurrentStamina() > iAmountPerSecond)
+        {
+            StartStaminaReductionTimer(ability, iAmountPerSecond);
+        }
+        else
+        {
+            (ability as OnButtonPressToggleAbility).ForceAbilityOff(this);
+        }
     }
 }

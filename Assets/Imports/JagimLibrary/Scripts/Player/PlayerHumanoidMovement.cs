@@ -83,7 +83,7 @@ public class PlayerHumanoidMovement : PlayerMovement
         {
             _movementInputVector = _inputActions.Player.Move.ReadValue<Vector2>();
 
-            Vector2 movementOffset = _movementInputVector * fCurrentSpeed * Time.fixedDeltaTime;
+            Vector2 movementOffset = _movementInputVector * (fCurrentSpeed * fSpeedModifier) * Time.fixedDeltaTime;
             Vector3 newPos = new Vector3(_rigidbody.position.x - movementOffset.y, _rigidbody.position.y, _rigidbody.position.z + movementOffset.x);
             _rigidbody.MovePosition(newPos);
         }

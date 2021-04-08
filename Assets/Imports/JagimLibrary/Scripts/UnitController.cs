@@ -17,6 +17,9 @@ public class UnitController : MonoBehaviour
     [SerializeField, LabelText("Max: "), BoxGroup("Base Variables"), HorizontalGroup("Base Variables/Stamina"), LabelWidth(30)]
     private int _iMaxStamina;
 
+    [SerializeField, LabelText("Stamina Regen (time per 1 stamina regen)"), BoxGroup("Base Variables"), LabelWidth(240)]
+    private float _fStaminaRegenSpeed;
+
     private Material _material_Original;
 
     [SerializeField, LabelText("Skinned Mesh Renderer"), BoxGroup("Base Variables"), Title("Damage Animation")]
@@ -35,6 +38,8 @@ public class UnitController : MonoBehaviour
 
     private bool _bKnockedBack;
     private float _fTempDamageModifier;
+
+    private bool _bStaminaRegenTimerStarted;
 
     protected bool KnockedBack
     {
@@ -66,9 +71,11 @@ public class UnitController : MonoBehaviour
     protected virtual void InitVariables()
     {
         _iCurrentHealth = _iMaxHealth;
+        _iCurrentStamina = _iMaxStamina;
         _material_Original = _skinnedMeshRenderer.material;
         _bKnockedBack = false;
         _fTempDamageModifier = 1.0f;
+        _bStaminaRegenTimerStarted = false;
     }
 
     public void TakeDamage(int iDamage)
@@ -80,6 +87,16 @@ public class UnitController : MonoBehaviour
         _fTempDamageModifier = 1.0f;
 
         DamageAnimation();
+    }
+
+    public int GetCurrentStamina()
+    {
+        return _iCurrentStamina;
+    }
+
+    public void ReduceStamina(int iAmount)
+    {
+        _iCurrentStamina -= iAmount;
     }
 
     public virtual void BeKnockedBack(Transform trans, float fDistance, float fForce)
@@ -111,7 +128,23 @@ public class UnitController : MonoBehaviour
             DestroyUnit();
         }
 
+        if (_iCurrentStamina < _iMaxStamina && !_bStaminaRegenTimerStarted)
+        {
+            StartCoroutine(RegenStamina());
+        }
+
         UpdateObject();
+    }
+
+    private IEnumerator RegenStamina()
+    {
+        _bStaminaRegenTimerStarted = true;
+
+        yield return new WaitForSeconds(_fStaminaRegenSpeed);
+
+        _bStaminaRegenTimerStarted = false;
+
+        _iCurrentStamina++;
     }
 
     protected virtual void UpdateObject()
@@ -146,5 +179,10 @@ public class UnitController : MonoBehaviour
     public void SetDamageModifer(float fAmount)
     {
         _fTempDamageModifier = fAmount;
+    }
+
+    public void ChangeMovementModifier(float fAmount)
+    {
+        GetComponent<UnitMovement>().fSpeedModifier += fAmount;
     }
 }
