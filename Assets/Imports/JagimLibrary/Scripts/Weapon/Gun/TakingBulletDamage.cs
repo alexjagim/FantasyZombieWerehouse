@@ -1,21 +1,25 @@
-﻿using System.Collections;
+﻿using Foundation.Unit;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TakingBulletDamage : MonoBehaviour
+namespace Foundation.Weapon.Gun
 {
-    private UnitController _controller;
-
-    private void Awake()
+    public class TakingBulletDamage : MonoBehaviour
     {
-        _controller = GetComponent<UnitController>();
-    }
+        private UnitController _controller;
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.transform.tag == "Bullet")
+        private void Awake()
         {
-            _controller.TakeDamage(other.transform.parent.gameObject.GetComponent<ProjectileInformation>().Damage);
+            _controller = GetComponent<UnitController>();
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.transform.tag == "Bullet")
+            {
+                _controller.TakeDamage(other.transform.parent.gameObject.GetComponent<ProjectileInformation>().Damage);
+            }
         }
     }
 }

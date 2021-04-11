@@ -2,27 +2,31 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
+using Foundation.Animation;
 
-public class GunController : MonoBehaviour
+namespace Foundation.Weapon.Gun
 {
-    [LabelText("Gun Flash Object"), ChildGameObjectsOnly]
-    public GameObject GunFlash;
-
-    [LabelText("Bullet Spawn Position"), ChildGameObjectsOnly]
-    public Transform trans_BulletSpawn;
-
-    public int iNumberOfClipsRemaining
+    public class GunController : MonoBehaviour
     {
-        get; set;
-    }
+        [LabelText("Gun Flash Object"), ChildGameObjectsOnly]
+        public GameObject GunFlash;
 
-    public int iNumberOfShotsRemaining
-    {
-        get; set;
-    }
+        [LabelText("Bullet Spawn Position"), ChildGameObjectsOnly]
+        public Transform trans_BulletSpawn;
 
-    public void PlayGunFireAnimation()
-    {
-        GunFlash.GetComponent<GunFlashAnimation>().TriggerGunFlash();
+        public int iNumberOfClipsRemaining
+        {
+            get; set;
+        }
+
+        public int iNumberOfShotsRemaining
+        {
+            get; set;
+        }
+
+        public void PlayGunFireAnimation()
+        {
+            GunFlash.GetComponent<GunFlashAnimation>().TriggerGunFlash();
+        }
     }
 }

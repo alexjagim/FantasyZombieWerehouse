@@ -3,56 +3,59 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UnitMovement : MonoBehaviour
+namespace Foundation.Unit
 {
-    protected UnitController _controller;
-
-    [SerializeField, BoxGroup("Base Variables"), LabelText("Movement Speed")]
-    protected float fMovementSpeed = 0.0f;
-
-    [SerializeField, BoxGroup("Base Variables"), LabelText("Current Speed"), ReadOnly]
-    protected float fCurrentSpeed;
-
-    [HideInInspector]
-    public float fSpeedModifier = 1.0f;
-
-    protected virtual void InitController()
+    public class UnitMovement : MonoBehaviour
     {
-        _controller = new UnitController();
-    }
+        protected UnitController _controller;
 
-    protected virtual void InitVariables()
-    {
+        [SerializeField, BoxGroup("Base Variables"), LabelText("Movement Speed")]
+        protected float fMovementSpeed = 0.0f;
 
-    }
+        [SerializeField, BoxGroup("Base Variables"), LabelText("Current Speed"), ReadOnly]
+        protected float fCurrentSpeed;
 
-    // Start is called before the first frame update
-    private void Start()
-    {
-        InitController();
-        InitVariables();
+        [HideInInspector]
+        public float fSpeedModifier = 1.0f;
 
-        fCurrentSpeed = fMovementSpeed;
-    }
+        protected virtual void InitController()
+        {
+            _controller = new UnitController();
+        }
 
-    // Update is called once per frame
-    private void Update()
-    {
-        UpdateAnimations();
-    }
+        protected virtual void InitVariables()
+        {
 
-    private void FixedUpdate()
-    {
-        UpdateMovement();
-    }
+        }
 
-    protected virtual void UpdateAnimations()
-    {
+        // Start is called before the first frame update
+        private void Start()
+        {
+            InitController();
+            InitVariables();
 
-    }
+            fCurrentSpeed = fMovementSpeed;
+        }
 
-    protected virtual void UpdateMovement()
-    {
+        // Update is called once per frame
+        private void Update()
+        {
+            UpdateAnimations();
+        }
 
+        private void FixedUpdate()
+        {
+            UpdateMovement();
+        }
+
+        protected virtual void UpdateAnimations()
+        {
+
+        }
+
+        protected virtual void UpdateMovement()
+        {
+
+        }
     }
 }

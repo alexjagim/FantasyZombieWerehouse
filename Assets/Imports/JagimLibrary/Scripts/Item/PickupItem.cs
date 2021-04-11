@@ -2,16 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class PickupItem : MonoBehaviour
+namespace Foundation.Item
 {
-    public abstract void Pickup(GameObject obj);
-
-    private void OnTriggerEnter(Collider other)
+    public abstract class PickupItem : MonoBehaviour
     {
-        if (other.tag == "Player")
+        public abstract void Pickup(GameObject obj);
+
+        private void OnTriggerEnter(Collider other)
         {
-            Pickup(other.gameObject);
-            Destroy(gameObject);
+            if (other.tag == "Player")
+            {
+                Pickup(other.gameObject);
+                Destroy(gameObject);
+            }
         }
     }
 }
+

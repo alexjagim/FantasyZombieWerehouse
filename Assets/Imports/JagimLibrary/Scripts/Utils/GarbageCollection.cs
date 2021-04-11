@@ -3,40 +3,43 @@ using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
 
-public class GarbageCollection : MonoBehaviour
+namespace Foundation.Utils
 {
-    [SerializeField, LabelText("Destroy Parent Objects")]
-    private bool _bDestroyParentObjects;
-
-    [SerializeField, LabelText("Tags")]
-    private List<string> _list_sTags;
-
-    private void OnTriggerEnter(Collider other)
+    public class GarbageCollection : MonoBehaviour
     {
-        GameObject obj = other.gameObject;
+        [SerializeField, LabelText("Destroy Parent Objects")]
+        private bool _bDestroyParentObjects;
 
-        if (_list_sTags.Contains(other.tag))
+        [SerializeField, LabelText("Tags")]
+        private List<string> _list_sTags;
+
+        private void OnTriggerEnter(Collider other)
         {
-            PreTriggerAction(obj);
+            GameObject obj = other.gameObject;
 
-            if(_bDestroyParentObjects)
+            if (_list_sTags.Contains(other.tag))
             {
-                while(obj.transform.parent != null)
+                PreTriggerAction(obj);
+
+                if (_bDestroyParentObjects)
                 {
-                    obj = obj.transform.parent.gameObject;
-                }
+                    while (obj.transform.parent != null)
+                    {
+                        obj = obj.transform.parent.gameObject;
+                    }
 
-                Destroy(obj);
-            }
-            else
-            {
-                Destroy(other.gameObject);
+                    Destroy(obj);
+                }
+                else
+                {
+                    Destroy(other.gameObject);
+                }
             }
         }
-    }
 
-    protected virtual void PreTriggerAction(GameObject collisionObject)
-    {
+        protected virtual void PreTriggerAction(GameObject collisionObject)
+        {
 
+        }
     }
 }

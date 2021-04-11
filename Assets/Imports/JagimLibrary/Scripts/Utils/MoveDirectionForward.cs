@@ -3,29 +3,32 @@ using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
 
-[RequireComponent(typeof(Transform))]
-public class MoveDirectionForward : MonoBehaviour
+namespace Foundation.Utils
 {
-    [SerializeField, LabelText("Speed")]
-    protected float _fSpeed;
-
-    private void Awake()
+    [RequireComponent(typeof(Transform))]
+    public class MoveDirectionForward : MonoBehaviour
     {
-        InitActions();
-    }
+        [SerializeField, LabelText("Speed")]
+        protected float _fSpeed;
 
-    void Update()
-    {
-        UpdateObject();
-    }
+        private void Awake()
+        {
+            InitActions();
+        }
 
-    protected virtual void UpdateObject()
-    {
-        transform.position += (transform.forward * _fSpeed * Time.deltaTime);
-    }
+        void Update()
+        {
+            UpdateObject();
+        }
 
-    protected virtual void InitActions()
-    {
+        protected virtual void UpdateObject()
+        {
+            transform.position += (transform.forward * _fSpeed * Time.deltaTime);
+        }
 
+        protected virtual void InitActions()
+        {
+
+        }
     }
 }

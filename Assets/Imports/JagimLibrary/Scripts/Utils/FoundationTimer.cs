@@ -2,32 +2,35 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FoundationTimer
+namespace Foundation.Utils
 {
-    private float _fDuration;
-    private bool _bTimerComplete;
-
-    public FoundationTimer(float fDuration)
+    public class FoundationTimer
     {
-        _fDuration = fDuration;
-        _bTimerComplete = false;
-    }
+        private float _fDuration;
+        private bool _bTimerComplete;
 
-    public void TimerStart()
-    {
-        _bTimerComplete = false;
-        StartTimerCoroutine();
-    }
+        public FoundationTimer(float fDuration)
+        {
+            _fDuration = fDuration;
+            _bTimerComplete = false;
+        }
 
-    public bool TimerComplete()
-    {
-        return _bTimerComplete;
-    }
+        public void TimerStart()
+        {
+            _bTimerComplete = false;
+            StartTimerCoroutine();
+        }
 
-    private IEnumerator StartTimerCoroutine()
-    {
-        yield return new WaitForSeconds(_fDuration);
+        public bool TimerComplete()
+        {
+            return _bTimerComplete;
+        }
 
-        _bTimerComplete = true;
+        private IEnumerator StartTimerCoroutine()
+        {
+            yield return new WaitForSeconds(_fDuration);
+
+            _bTimerComplete = true;
+        }
     }
 }

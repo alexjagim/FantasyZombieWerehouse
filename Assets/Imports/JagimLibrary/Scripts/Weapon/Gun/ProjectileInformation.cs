@@ -3,34 +3,37 @@ using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
 
-public class ProjectileInformation : MonoBehaviour
+namespace Foundation.Weapon.Gun
 {
-    [SerializeField, LabelText("Damage")]
-    private int _iDamage;
-    [SerializeField, LabelText("Speed")]
-    private float _fSpeed;
-
-    public int Damage
+    public class ProjectileInformation : MonoBehaviour
     {
-        get
-        {
-            return _iDamage;
-        }
-        set
-        {
-            _iDamage = value;
-        }
-    }
+        [SerializeField, LabelText("Damage")]
+        private int _iDamage;
+        [SerializeField, LabelText("Speed")]
+        private float _fSpeed;
 
-    public float Speed
-    {
-        get
+        public int Damage
         {
-            return _fSpeed;
+            get
+            {
+                return _iDamage;
+            }
+            set
+            {
+                _iDamage = value;
+            }
         }
-        set
+
+        public float Speed
         {
-            _fSpeed = value;
+            get
+            {
+                return _fSpeed;
+            }
+            set
+            {
+                _fSpeed = value;
+            }
         }
     }
 }

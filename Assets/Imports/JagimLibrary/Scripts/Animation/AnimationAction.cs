@@ -2,7 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class AnimationAction : ScriptableObject
+namespace Foundation.Animation
 {
-    public abstract void Act(Animator animator);
+    public abstract class AnimationAction : UnityEngine.ScriptableObject
+    {
+        public abstract void Act(Animator animator);
+    }
 }
+

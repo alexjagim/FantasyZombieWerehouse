@@ -2,23 +2,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
+using Foundation.Unit;
 
-public class DestroyOnHitWithDamage : DestroyOnHit
+namespace Foundation.Utils
 {
-    [SerializeField, LabelText("Damage")]
-    private int _iDamage;
-
-    protected override void ActionsBeforeBeingDestroyed(GameObject CollisionObject)
+    public class DestroyOnHitWithDamage : DestroyOnHit
     {
-        base.ActionsBeforeBeingDestroyed(CollisionObject);
+        [SerializeField, LabelText("Damage")]
+        private int _iDamage;
 
-        if (CollisionObject.TryGetComponent<UnitController>(out UnitController controller))
+        protected override void ActionsBeforeBeingDestroyed(GameObject CollisionObject)
         {
-            CollisionObject.GetComponent<UnitController>().TakeDamage(_iDamage);
-        }
-        else
-        {
-            CollisionObject.GetComponentInParent<UnitController>().TakeDamage(_iDamage);
+            base.ActionsBeforeBeingDestroyed(CollisionObject);
+
+            if (CollisionObject.TryGetComponent<UnitController>(out UnitController controller))
+            {
+                CollisionObject.GetComponent<UnitController>().TakeDamage(_iDamage);
+            }
+            else
+            {
+                CollisionObject.GetComponentInParent<UnitController>().TakeDamage(_iDamage);
+            }
         }
     }
 }

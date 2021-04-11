@@ -3,14 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
 
-[RequireComponent(typeof(Rigidbody))]
-public class RandomRotationAnimation : MonoBehaviour
+namespace Foundation.Animation
 {
-    [SerializeField, LabelText("Rotation Speed)")]
-    private float _fRotationSpeed;
-
-    void Start()
+    [RequireComponent(typeof(Rigidbody))]
+    public class RandomRotationAnimation : MonoBehaviour
     {
-        GetComponent<Rigidbody>().angularVelocity = Random.insideUnitSphere * _fRotationSpeed;
+        [SerializeField, LabelText("Rotation Speed)")]
+        private float _fRotationSpeed;
+
+        void Start()
+        {
+            GetComponent<Rigidbody>().angularVelocity = Random.insideUnitSphere * _fRotationSpeed;
+        }
     }
 }
+

@@ -2,31 +2,34 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+namespace Foundation
 {
-    [SerializeField]
-    private List<GameObject> enemies;
-
-    private void Awake()
+    public class GameManager : MonoBehaviour
     {
+        [SerializeField]
+        private List<GameObject> enemies;
 
-    }
-
-    private void Start()
-    {
-        if (enemies == null)
+        private void Awake()
         {
-            enemies = new List<GameObject>();
+
         }
-    }
 
-    public List<GameObject> GetEnemiesList()
-    {
-        return enemies;
-    }
+        private void Start()
+        {
+            if (enemies == null)
+            {
+                enemies = new List<GameObject>();
+            }
+        }
 
-    public void AddToEnemiesList(GameObject obj)
-    {
-        enemies.Add(obj);
+        public List<GameObject> GetEnemiesList()
+        {
+            return enemies;
+        }
+
+        public void AddToEnemiesList(GameObject obj)
+        {
+            enemies.Add(obj);
+        }
     }
 }

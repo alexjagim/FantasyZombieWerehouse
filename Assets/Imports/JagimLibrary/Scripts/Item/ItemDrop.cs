@@ -2,30 +2,35 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
+using Foundation.Unit.AI.Humanoid;
 
-public class ItemDrop : MonoBehaviour
+namespace Foundation.Item
 {
-    [SerializeField, LabelText("Items That Can Drop"), Required]
-    private List<GameObject> obj_ItemsThatCanDrop;
-
-    [SerializeField, LabelText("Item to Drop"), ReadOnly]
-    private GameObject obj_Item = null;
-
-    private void Start()
+    public class ItemDrop : MonoBehaviour
     {
-        DetermineItemDrop();
+        [SerializeField, LabelText("Items That Can Drop"), Required]
+        private List<GameObject> obj_ItemsThatCanDrop;
 
-        GetComponent<AIHumanoidController>().actions_OnDestroy += DropItem;
-    }
+        [SerializeField, LabelText("Item to Drop"), ReadOnly]
+        private GameObject obj_Item = null;
 
-    private void DetermineItemDrop()
-    {
-        obj_Item = obj_ItemsThatCanDrop[Random.Range(0, obj_ItemsThatCanDrop.Count)];
-    }
+        private void Start()
+        {
+            DetermineItemDrop();
 
-    private void DropItem()
-    {
-        GameObject temp = Instantiate(obj_Item);
-        temp.transform.position += transform.position;
+            GetComponent<AIHumanoidController>().actions_OnDestroy += DropItem;
+        }
+
+        private void DetermineItemDrop()
+        {
+            obj_Item = obj_ItemsThatCanDrop[Random.Range(0, obj_ItemsThatCanDrop.Count)];
+        }
+
+        private void DropItem()
+        {
+            GameObject temp = Instantiate(obj_Item);
+            temp.transform.position += transform.position;
+        }
     }
 }
+

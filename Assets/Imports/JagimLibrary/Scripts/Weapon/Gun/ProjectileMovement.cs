@@ -2,41 +2,45 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
+using Foundation.Utils;
 
-[RequireComponent(typeof(ProjectileInformation))]
-public class ProjectileMovement : MoveDirectionForward
+namespace Foundation.Weapon.Gun
 {
-    [SerializeField, LabelText("Auto Destroy With Distance"), LabelWidth(160.0f)]
-    private bool _bAutoDestroy;
-
-    [SerializeField, LabelText("Max Distance"), ShowIf("_bAutoDestroy")]
-    private float _fMaxDistance;
-
-    private Vector3 _pos_Initial;
-
-    [SerializeField, LabelText("Current Distance"), ShowIf("_bAutoDestroy"), ReadOnly]
-    private float _fCurrentDistance;
-
-    protected override void InitActions()
+    [RequireComponent(typeof(ProjectileInformation))]
+    public class ProjectileMovement : MoveDirectionForward
     {
-        base.InitActions();
+        [SerializeField, LabelText("Auto Destroy With Distance"), LabelWidth(160.0f)]
+        private bool _bAutoDestroy;
 
-        _fSpeed = GetComponent<ProjectileInformation>().Speed;
+        [SerializeField, LabelText("Max Distance"), ShowIf("_bAutoDestroy")]
+        private float _fMaxDistance;
 
-        _pos_Initial = transform.position;
-    }
+        private Vector3 _pos_Initial;
 
-    protected override void UpdateObject()
-    {
-        base.UpdateObject();
+        [SerializeField, LabelText("Current Distance"), ShowIf("_bAutoDestroy"), ReadOnly]
+        private float _fCurrentDistance;
 
-        if(_bAutoDestroy)
+        protected override void InitActions()
         {
-            _fCurrentDistance = Vector3.Distance(transform.position, _pos_Initial);
+            base.InitActions();
 
-            if (_fCurrentDistance >= _fMaxDistance)
+            _fSpeed = GetComponent<ProjectileInformation>().Speed;
+
+            _pos_Initial = transform.position;
+        }
+
+        protected override void UpdateObject()
+        {
+            base.UpdateObject();
+
+            if (_bAutoDestroy)
             {
-                Destroy(gameObject);
+                _fCurrentDistance = Vector3.Distance(transform.position, _pos_Initial);
+
+                if (_fCurrentDistance >= _fMaxDistance)
+                {
+                    Destroy(gameObject);
+                }
             }
         }
     }
