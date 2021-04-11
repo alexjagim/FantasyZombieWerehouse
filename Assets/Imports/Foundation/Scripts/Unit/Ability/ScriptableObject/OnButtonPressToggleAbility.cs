@@ -10,10 +10,14 @@ namespace Foundation.Unit.Ability.ScriptableObject
     [CreateAssetMenu(menuName = "Pluggable/AbilitySystem/Abilities/ButtonPressToggle")]
     public class OnButtonPressToggleAbility : OnButtonPressAbility
     {
-        public AnimationAction[] animationTriggers_ToggleOff;
-        public Effect[] effects_ToggleOff;
 
+        [LabelText("Stamina Per Second"), BoxGroup("Toggle")]
         public int iStaminaUsePerSecond;
+
+        [LabelText("Animation Triggers"), BoxGroup("Toggle/Toggle Off")]
+        public AnimationAction[] animationTriggers_ToggleOff;
+        [LabelText("Effects"), BoxGroup("Toggle/Toggle Off")]
+        public Effect[] effects_ToggleOff;
 
         protected override sealed void AbilityFunctionality(AbilityController controller)
         {

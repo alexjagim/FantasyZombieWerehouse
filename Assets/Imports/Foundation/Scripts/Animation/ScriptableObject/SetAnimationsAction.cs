@@ -8,6 +8,7 @@ namespace Foundation.Animation.ScriptableObject
     [CreateAssetMenu(menuName = "Pluggable/Animations/SetAnimations")]
     public class SetAnimationsAction : AnimationAction
     {
+        [LabelText("Animations")]
         public List<AnimationParameterInfo> _list_Animations;
 
         public override void Act(Animator animator)
