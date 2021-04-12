@@ -845,6 +845,10 @@ PrefabInstance:
       propertyPath: abilities.Array.data[0]
       value: 
       objectReference: {fileID: 11400000, guid: 79fd1d1761c99f94c8be97dd68d68be9, type: 2}
+    - target: {fileID: 5343631826635998747, guid: f22c00f232e341847a994989609be5e0, type: 3}
+      propertyPath: m_CullingMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5343631827246554778, guid: f22c00f232e341847a994989609be5e0, type: 3}
       propertyPath: m_Name
       value: Player
