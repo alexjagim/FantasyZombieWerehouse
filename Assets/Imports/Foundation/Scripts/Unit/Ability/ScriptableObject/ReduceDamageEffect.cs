@@ -8,7 +8,7 @@ namespace Foundation.Unit.Ability.ScriptableObject
     [CreateAssetMenu(menuName = "Pluggable/AbilitySystem/Effects/ReduceDamage")]
     public class ReduceDamageEffect : Effect
     {
-        [LabelText("Reduction Amount"), BoxGroup("Damage Reduction")]
+        [LabelText("Reduction Amount (%)"), LabelWidth(130), BoxGroup("Damage Reduction")]
         public float fReductionAmount;
 
         public override void Act(UnitController controller)

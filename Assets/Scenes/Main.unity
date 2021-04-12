@@ -409,6 +409,23 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6107364190088534043, guid: 77e20cec3dba4b74da2c021839756749, type: 3}
   m_PrefabInstance: {fileID: 1364016227803549516}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1393722602 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5343631826643577287, guid: f22c00f232e341847a994989609be5e0, type: 3}
+  m_PrefabInstance: {fileID: 5343631826496256300}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1393722605
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1393722602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30267e4e8ab03844989cfe92afdac802, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1430742967 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5343631827246554779, guid: f22c00f232e341847a994989609be5e0, type: 3}
@@ -844,7 +861,7 @@ PrefabInstance:
     - target: {fileID: 4340752815784493372, guid: f22c00f232e341847a994989609be5e0, type: 3}
       propertyPath: abilities.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: 79fd1d1761c99f94c8be97dd68d68be9, type: 2}
+      objectReference: {fileID: 11400000, guid: c93fa8383fe936a42b2ce5bc3202b1bf, type: 2}
     - target: {fileID: 5343631826635998747, guid: f22c00f232e341847a994989609be5e0, type: 3}
       propertyPath: m_CullingMode
       value: 1

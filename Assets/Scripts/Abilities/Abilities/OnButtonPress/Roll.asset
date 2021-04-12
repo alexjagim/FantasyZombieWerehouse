@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d43891e53b770844a9988028728577f6, type: 3}
+  m_Name: Roll
+  m_EditorClassIdentifier: 
+  icon: {fileID: 0}
+  cooldownTime: 0
+  animationTriggers:
+  - {fileID: 11400000, guid: e06f94a5c90b9e54d974721e516cdbb2, type: 2}
+  effectsToSelf:
+  - {fileID: 11400000, guid: f5415cbee31b70948b6086a9cabe7f1c, type: 2}
+  effectsToOthers: []
+  input:
+    m_Name: Interact
+    m_Type: 1
+    m_ExpectedControlType: Button
+    m_Id: f2340632-c2ed-4d2d-a1cf-c5be623adf1e
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
