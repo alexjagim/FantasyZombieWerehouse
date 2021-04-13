@@ -30,6 +30,18 @@ Transform:
   m_Father: {fileID: 5343631826643234873}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!114 &1393722605
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5343631826643577287}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30267e4e8ab03844989cfe92afdac802, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5343631827246554778
 GameObject:
   m_ObjectHideFlags: 0
@@ -113,10 +125,11 @@ MonoBehaviour:
   _iCurrentHealth: 0
   _iMaxHealth: 10
   _iCurrentStamina: 0
-  _iMaxStamina: 0
+  _iMaxStamina: 10
+  _fStaminaRegenSpeed: 1
   _skinnedMeshRenderer: {fileID: 5343631826640396523}
   _material_Damage: {fileID: 2100000, guid: 7fed353a63d9b264bad2d0c8c8c4de71, type: 2}
-  _fDamageAnimationDelay: 0.25
+  _fDamageAnimationDelay: 0.5
   _fDamageAnimationDuration: 0.25
   _rigidbody: {fileID: 1430742970}
   _animator: {fileID: 5343631826635998747}
@@ -136,6 +149,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fMovementSpeed: 10
   fCurrentSpeed: 0
+  fSpeedModifier: 1
   _fSprintSpeed: 0
 --- !u!114 &5984621789960972883
 MonoBehaviour:
@@ -182,12 +196,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60edf007271206248a8b82745d7c14c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  abilities: []
+  abilities:
+  - {fileID: 11400000, guid: 79fd1d1761c99f94c8be97dd68d68be9, type: 2}
   animator: {fileID: 5343631826635998747}
+  _bAbilitiesCanTrigger: 
+  _bAbilitiesAreToggledOn: 
   effects_onAttack: []
+  effects_onHit: []
   effects_Continuous: []
   effects_OnCollision: []
-  effects_Instant: []
 --- !u!1 &7939582296417619049
 GameObject:
   m_ObjectHideFlags: 0
@@ -309,6 +326,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec8cb55dea48599499f357baa1e2b608, type: 3}
+--- !u!1 &5343631826643577287 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6383143599550506899, guid: ec8cb55dea48599499f357baa1e2b608, type: 3}
+  m_PrefabInstance: {fileID: 1350270224398274132}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5343631826643296505 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6383143599550262957, guid: ec8cb55dea48599499f357baa1e2b608, type: 3}

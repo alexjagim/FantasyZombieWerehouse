@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6558ea01421c17a4e8655a1c72a941d4, type: 3}
+  m_Name: Knives
+  m_EditorClassIdentifier: 
+  name: Knives
+  prefab: {fileID: 143978, guid: ccda26451b9e11e4d971113e793f601e, type: 3}
+  attackSpeed: 1
+  damage: 1
+  sAnimationToggle: Stab
+  canRotateDuringAttack: 1
+  canMoveDuringAttack: 1
+  knockbackEffect: 0
+  knockbackForce: 0
+  knockbackDistance: 0
+  fHeadHorizontalRotation: -0.5
+  fBodyHorizontalRotation: 0.5
+  prefab_secondary: {fileID: 143978, guid: ccda26451b9e11e4d971113e793f601e, type: 3}
+  bSecondaryCanAttack: 0
+  damage_secondary: 0

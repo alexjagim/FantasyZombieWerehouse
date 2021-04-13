@@ -10,5 +10,15 @@ namespace Foundation.Animation
         {
             GetComponent<Animator>().SetBool(sParameterName, false);
         }
+
+        public void SetHeadHorizontal(float fAmount)
+        {
+            GetComponent<Animator>().SetFloat("Head_Horizontal_f", fAmount);
+        }
+
+        public void SetBodyHorizontal(float fAmount)
+        {
+            GetComponent<Animator>().SetFloat("Body_Horizontal_f", fAmount);
+        }
     }
 }
