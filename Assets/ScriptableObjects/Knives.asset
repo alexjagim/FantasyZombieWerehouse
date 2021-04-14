@@ -22,8 +22,8 @@ MonoBehaviour:
   knockbackEffect: 0
   knockbackForce: 0
   knockbackDistance: 0
-  fHeadHorizontalRotation: -0.5
-  fBodyHorizontalRotation: 0.5
+  fHeadHorizontalRotation: -0.4
+  fBodyHorizontalRotation: 0
   prefab_secondary: {fileID: 143978, guid: ccda26451b9e11e4d971113e793f601e, type: 3}
   bSecondaryCanAttack: 0
   damage_secondary: 0
