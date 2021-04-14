@@ -69,16 +69,17 @@ namespace Foundation.Unit
             if (_weapons_Equipped[index].prefab != null)
             {
                 temp = Instantiate(_weapons_Equipped[index].prefab);
+                temp.transform.localScale = _weapons_Equipped[index].prefab.transform.localScale;
             }
             else
             {
                 temp = new GameObject();
+                temp.transform.localScale = new Vector3(1, 1, 1);
             }
 
             temp.transform.parent = _trans_WeaponSpawnParent;
             temp.transform.localPosition = new Vector3(0, 0, 0);
             temp.transform.localRotation = Quaternion.identity;
-            temp.transform.localScale = new Vector3(1, 1, 1);
             temp.SetActive(false);
 
             _list_weapons.Add(temp);

@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdea4249ab49a16469ac9fb6510f4aee, type: 3}
+  m_Name: Bow
+  m_EditorClassIdentifier: 
+  name: Bow
+  prefab: {fileID: 1720039522059684, guid: cb5065e94fdb6a449a49772685dabea4, type: 3}
+  attackSpeed: 1
+  damage: 1
+  sAnimationToggle: Attack
+  canRotateDuringAttack: 1
+  canMoveDuringAttack: 1
+  knockbackEffect: 0
+  knockbackForce: 0
+  knockbackDistance: 0
+  fHeadHorizontalRotation: -0.41
+  fBodyHorizontalRotation: 0
