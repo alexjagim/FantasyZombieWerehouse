@@ -62,7 +62,7 @@ namespace Foundation.Unit.Player.Humanoid
 
             if ((_controller as PlayerHumanoidController).CanMove)
             {
-                if ((_movementInputVector.x != 0 || _movementInputVector.y != 0) && !(_controller as PlayerHumanoidController).IsLockedOntoEnemy)
+                if (_movementInputVector.x != 0 || _movementInputVector.y != 0)
                 {
                     _animator.SetBool("bWalking", true);
                 }
