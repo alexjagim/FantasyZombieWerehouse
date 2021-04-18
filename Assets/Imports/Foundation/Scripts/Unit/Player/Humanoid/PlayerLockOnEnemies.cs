@@ -10,14 +10,25 @@ namespace Foundation.Unit.Player.Humanoid
         [SerializeField, LabelText("Indicator Object")]
         private GameObject _obj_Indicator;
 
-        private PlayerHumanoidController _playerController;
+        protected PlayerHumanoidController _playerController;
         private PlayerInputActions _inputActions;
 
-        private int _iEnemyIndex = 0;
-        private List<GameObject> _list_Enemies;
+        protected int _iEnemyIndex = 0;
+        protected List<GameObject> _list_Enemies;
 
         // Start is called before the first frame update
         void Start()
+        {
+            InitVariables();
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+            UpdateObject();
+        }
+
+        protected virtual void InitVariables()
         {
             _playerController = GetComponent<PlayerHumanoidController>();
             _inputActions = _playerController.GetInputActions();
@@ -25,29 +36,53 @@ namespace Foundation.Unit.Player.Humanoid
             _list_Enemies = _playerController.GetGameManager().GetEnemiesList();
         }
 
-        // Update is called once per frame
-        void Update()
+        protected virtual void UpdateObject()
         {
-            if (_inputActions.Player.LockOnEnemies.triggered)
+            if (GetLockOnEnemiesTriggered())
             {
-                IterateThroughEnemies();
+                LockOnEnemiesFunctionality();
             }
 
-            if (_inputActions.Player.CancelLockOnEnemies.triggered && _playerController.IsLockedOntoEnemy)
+            if (GetCancelLockOnEnemiesTriggered())
             {
-                _playerController.ToggleIsLockedOntoEnemy();
-
-                DeactivateIndicator();
+                CancelLockOnEnemiesFunctionality();
             }
 
             if (_playerController.IsLockedOntoEnemy)
             {
-                Vector3 enemyPos = new Vector3(_list_Enemies[_iEnemyIndex].transform.position.x, 0.0f, _list_Enemies[_iEnemyIndex].transform.position.z);
-                transform.LookAt(enemyPos);
+                WhileLockedOnEnemyFunctionality();
             }
         }
 
-        private void IterateThroughEnemies()
+        protected bool GetLockOnEnemiesTriggered()
+        {
+            return _inputActions.Player.LockOnEnemies.triggered;
+        }
+
+        protected bool GetCancelLockOnEnemiesTriggered()
+        {
+            return _inputActions.Player.CancelLockOnEnemies.triggered && _playerController.IsLockedOntoEnemy;
+        }
+
+        protected virtual void LockOnEnemiesFunctionality()
+        {
+            IterateThroughEnemies();
+        }
+
+        protected virtual void CancelLockOnEnemiesFunctionality()
+        {
+            _playerController.ToggleIsLockedOntoEnemy();
+
+            DeactivateIndicator();
+        }
+
+        protected virtual void WhileLockedOnEnemyFunctionality()
+        {
+            Vector3 enemyPos = new Vector3(_list_Enemies[_iEnemyIndex].transform.position.x, 0.0f, _list_Enemies[_iEnemyIndex].transform.position.z);
+            transform.LookAt(enemyPos);
+        }
+
+        protected void IterateThroughEnemies()
         {
             if (!_playerController.IsLockedOntoEnemy)
             {
@@ -69,7 +104,7 @@ namespace Foundation.Unit.Player.Humanoid
             }
         }
 
-        private void SetIndicatorParent(Transform trans)
+        protected void SetIndicatorParent(Transform trans)
         {
             if (_obj_Indicator != null)
             {
@@ -78,7 +113,7 @@ namespace Foundation.Unit.Player.Humanoid
             }
         }
 
-        private void ActivateIndicator(Transform trans)
+        protected void ActivateIndicator(Transform trans)
         {
             if (_obj_Indicator != null)
             {
@@ -87,7 +122,7 @@ namespace Foundation.Unit.Player.Humanoid
             }
         }
 
-        private void DeactivateIndicator()
+        protected void DeactivateIndicator()
         {
             if (_obj_Indicator != null)
             {
@@ -96,7 +131,7 @@ namespace Foundation.Unit.Player.Humanoid
             }
         }
 
-        private bool GetIndicatorIsActive()
+        protected bool GetIndicatorIsActive()
         {
             if (_obj_Indicator != null)
             {
