@@ -58,7 +58,7 @@ GameObject:
   - component: {fileID: 5984621789960972883}
   - component: {fileID: 1430742972}
   - component: {fileID: 4340752815784493372}
-  - component: {fileID: 1273304350}
+  - component: {fileID: 6662394135688363701}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -207,7 +207,7 @@ MonoBehaviour:
   effects_onHit: []
   effects_Continuous: []
   effects_OnCollision: []
---- !u!114 &1273304350
+--- !u!114 &6662394135688363701
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -216,10 +216,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 5343631827246554778}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4216614292b02164980fbe9128471c77, type: 3}
+  m_Script: {fileID: 11500000, guid: 3fe4078e38f069a40b9fed520570bb22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _obj_Indicator: {fileID: 5343631827941573203}
+  _fRangeForLockOn: 20
+  _bAutomaticallyLockOnNextEnemy: 1
+  _list_EnemiesInRange: []
 --- !u!1 &7939582296417619049
 GameObject:
   m_ObjectHideFlags: 0

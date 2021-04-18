@@ -66,41 +66,53 @@ namespace Foundation.Unit.Player.Humanoid
 
         protected virtual void LockOnEnemiesFunctionality()
         {
-            IterateThroughEnemies();
+            IterateThroughEnemies(_list_Enemies);
         }
 
         protected virtual void CancelLockOnEnemiesFunctionality()
         {
-            _playerController.ToggleIsLockedOntoEnemy();
+            _playerController.SetIsLockedOntoEnemy(false);
 
             DeactivateIndicator();
         }
 
         protected virtual void WhileLockedOnEnemyFunctionality()
         {
-            Vector3 enemyPos = new Vector3(_list_Enemies[_iEnemyIndex].transform.position.x, 0.0f, _list_Enemies[_iEnemyIndex].transform.position.z);
+            LookTowardEnemyIndex(_list_Enemies);
+        }
+
+        protected void LookTowardEnemyIndex(List<GameObject> list)
+        {
+            Vector3 enemyPos = new Vector3(list[_iEnemyIndex].transform.position.x, 0.0f, list[_iEnemyIndex].transform.position.z);
             transform.LookAt(enemyPos);
         }
 
-        protected void IterateThroughEnemies()
+        protected void IterateThroughEnemies(List<GameObject> list)
         {
+            if (list.Count <= 0)
+            {
+                CancelLockOnEnemiesFunctionality();
+
+                return;
+            }
+
             if (!_playerController.IsLockedOntoEnemy)
             {
                 _iEnemyIndex = 0;
-                _playerController.ToggleIsLockedOntoEnemy();
+                _playerController.SetIsLockedOntoEnemy(true);
 
-                ActivateIndicator(_list_Enemies[_iEnemyIndex].transform);
+                ActivateIndicator(list[_iEnemyIndex].transform);
             }
             else
             {
                 _iEnemyIndex++;
 
-                if (_iEnemyIndex >= _list_Enemies.Count)
+                if (_iEnemyIndex >= list.Count)
                 {
                     _iEnemyIndex = 0;
                 }
 
-                SetIndicatorParent(_list_Enemies[_iEnemyIndex].transform);
+                SetIndicatorParent(list[_iEnemyIndex].transform);
             }
         }
 

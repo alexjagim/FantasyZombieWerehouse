@@ -96,9 +96,9 @@ namespace Foundation.Unit
             return _animator;
         }
 
-        public void ToggleIsLockedOntoEnemy()
+        public void SetIsLockedOntoEnemy(bool bIsLockedOn)
         {
-            IsLockedOntoEnemy = !IsLockedOntoEnemy;
+            IsLockedOntoEnemy = bIsLockedOn;
         }
     }
 }
