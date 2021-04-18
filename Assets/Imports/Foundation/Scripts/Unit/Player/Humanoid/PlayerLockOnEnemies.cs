@@ -10,11 +10,16 @@ namespace Foundation.Unit.Player.Humanoid
         [SerializeField, LabelText("Indicator Object")]
         private GameObject _obj_Indicator;
 
+        [SerializeField, LabelText("Vision Cone Size")]
+        private float _fVisionCone = 45.0f;
+
         protected PlayerHumanoidController _playerController;
         private PlayerInputActions _inputActions;
 
         protected int _iEnemyIndex = 0;
         protected List<GameObject> _list_Enemies;
+
+        protected List<GameObject> _list_Iteration;
 
         // Start is called before the first frame update
         void Start()
@@ -34,6 +39,8 @@ namespace Foundation.Unit.Player.Humanoid
             _inputActions = _playerController.GetInputActions();
 
             _list_Enemies = _playerController.GetGameManager().GetEnemiesList();
+
+            _list_Iteration = _list_Enemies;
         }
 
         protected virtual void UpdateObject()
@@ -66,7 +73,7 @@ namespace Foundation.Unit.Player.Humanoid
 
         protected virtual void LockOnEnemiesFunctionality()
         {
-            IterateThroughEnemies(_list_Enemies);
+            IterateThroughEnemies(_list_Iteration);
         }
 
         protected virtual void CancelLockOnEnemiesFunctionality()
@@ -78,7 +85,7 @@ namespace Foundation.Unit.Player.Humanoid
 
         protected virtual void WhileLockedOnEnemyFunctionality()
         {
-            LookTowardEnemyIndex(_list_Enemies);
+            LookTowardEnemyIndex(_list_Iteration);
         }
 
         protected void LookTowardEnemyIndex(List<GameObject> list)
@@ -114,6 +121,56 @@ namespace Foundation.Unit.Player.Humanoid
 
                 SetIndicatorParent(list[_iEnemyIndex].transform);
             }
+        }
+
+        public void LockOntoClosestEnemyBeingLookedAt()
+        {
+            if (_list_Iteration.Count > 0)
+            {
+                GameObject obj_Closest = _list_Iteration[0];
+                float fClosestDistance = Vector3.Distance(transform.position, _list_Iteration[0].transform.position);
+
+                for (int i = 0; i < _list_Iteration.Count; ++i)
+                {
+                    if (ObjectIsWithinVisionCone(_list_Iteration[i]))
+                    {
+                        float dis = Vector3.Distance(transform.position, _list_Iteration[i].transform.position);
+
+                        if (dis < fClosestDistance)
+                        {
+                            fClosestDistance = dis;
+                            obj_Closest = _list_Iteration[i];
+                        }
+                    }
+                }
+
+                _iEnemyIndex = _list_Iteration.IndexOf(obj_Closest);
+
+                if (_iEnemyIndex == 0)
+                {
+                    if (!ObjectIsWithinVisionCone(_list_Iteration[0]))
+                    {
+                        return;
+                    }
+                    else
+                    {
+                        _playerController.SetIsLockedOntoEnemy(true);
+
+                        ActivateIndicator(_list_Iteration[_iEnemyIndex].transform);
+                    }
+                }
+            }
+            else
+            {
+                return;
+            }
+        }
+
+        private bool ObjectIsWithinVisionCone(GameObject obj)
+        {
+            Vector3 dir = obj.transform.position - transform.position;
+
+            return Mathf.Abs(Mathf.Atan2(dir.y, dir.x * Mathf.Rad2Deg)) <= (_fVisionCone / 2);
         }
 
         protected void SetIndicatorParent(Transform trans)

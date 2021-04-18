@@ -19,6 +19,8 @@ namespace Foundation.Unit.Player.Humanoid
         protected override void InitVariables()
         {
             base.InitVariables();
+
+            _list_Iteration = _list_EnemiesInRange;
         }
 
         protected override void UpdateObject()
@@ -27,22 +29,9 @@ namespace Foundation.Unit.Player.Humanoid
 
             UpdateIfEnemiesAreInRange();
 
+            _list_Iteration = _list_EnemiesInRange;
+
             base.UpdateObject();
-        }
-
-        protected override void LockOnEnemiesFunctionality()
-        {
-            IterateThroughEnemies(_list_EnemiesInRange);
-        }
-
-        protected override void CancelLockOnEnemiesFunctionality()
-        {
-            base.CancelLockOnEnemiesFunctionality();
-        }
-
-        protected override void WhileLockedOnEnemyFunctionality()
-        {
-            LookTowardEnemyIndex(_list_EnemiesInRange);
         }
 
         private void UpdateEnemiesAlreadyInRange()

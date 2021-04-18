@@ -13,11 +13,15 @@ namespace Foundation.Unit.Player.Humanoid.Weapon
         [SerializeField, LabelText("Next Weapon Button Enabled")]
         protected bool _bNextWeaponToggleEnabled;
 
+        private bool _bContainsLockOnEnemiesScript = false;
+
         protected override void InstantiateVariables()
         {
             base.InstantiateVariables();
 
             _inputActions = GetComponent<PlayerHumanoidController>().GetInputActions();
+
+            _bContainsLockOnEnemiesScript = TryGetComponent(out PlayerLockOnEnemies script);
         }
 
         protected override bool CanAttack()
@@ -28,6 +32,14 @@ namespace Foundation.Unit.Player.Humanoid.Weapon
         protected override void Attack()
         {
             base.Attack();
+
+            if(_bContainsLockOnEnemiesScript)
+            {
+                if (!_humanoidController.IsLockedOntoEnemy)
+                {
+                    GetComponent<PlayerLockOnEnemies>().LockOntoClosestEnemyBeingLookedAt();
+                }
+            }
 
             Collider[] hitColliders = Physics.OverlapBox(_trans_WeaponDamagePosition.position, _vect_WeaponDamageSize / 2, Quaternion.identity);
 
