@@ -99,6 +99,7 @@ namespace Foundation.Unit
         public void SetIsLockedOntoEnemy(bool bIsLockedOn)
         {
             IsLockedOntoEnemy = bIsLockedOn;
+            _animator.SetBool("bIsLockedOn", bIsLockedOn);
         }
     }
 }

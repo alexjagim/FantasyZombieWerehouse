@@ -21,6 +21,13 @@ namespace Foundation.Unit.Player.Humanoid
 
         protected List<GameObject> _list_Iteration;
 
+        private Rigidbody _rigidbody;
+
+        [SerializeField]
+        private float _fAnimPreviousDistance = -1.0f;
+        [SerializeField]
+        private float _fAnimPreviousAngle;
+
         // Start is called before the first frame update
         void Start()
         {
@@ -41,6 +48,8 @@ namespace Foundation.Unit.Player.Humanoid
             _list_Enemies = _playerController.GetGameManager().GetEnemiesList();
 
             _list_Iteration = _list_Enemies;
+
+            _rigidbody = _playerController.GetRigidbody();
         }
 
         protected virtual void UpdateObject()
@@ -58,6 +67,11 @@ namespace Foundation.Unit.Player.Humanoid
             if (_playerController.IsLockedOntoEnemy)
             {
                 WhileLockedOnEnemyFunctionality();
+            }
+
+            if (_playerController.IsLockedOntoEnemy)
+            {
+                UpdateAnimator();
             }
         }
 
@@ -79,6 +93,7 @@ namespace Foundation.Unit.Player.Humanoid
         protected virtual void CancelLockOnEnemiesFunctionality()
         {
             _playerController.SetIsLockedOntoEnemy(false);
+            _fAnimPreviousDistance = -1.0f;
 
             DeactivateIndicator();
         }
@@ -86,6 +101,41 @@ namespace Foundation.Unit.Player.Humanoid
         protected virtual void WhileLockedOnEnemyFunctionality()
         {
             LookTowardEnemyIndex(_list_Iteration);
+        }
+
+        protected virtual void UpdateAnimator()
+        {
+            Vector2 input = _playerController.GetInputActions().Player.Move.ReadValue<Vector2>();
+            float horizontal = input.x;
+            float vertical = input.y;
+
+            Vector3 movement = new Vector3(horizontal, 0.0f, vertical);
+
+            //Moving
+            if (movement.magnitude > 0)
+            {
+                movement.Normalize();
+                movement *= 1.0f * Time.deltaTime; //*= speed * Time.deltaTime;
+            }
+
+            float velocityZ = Vector3.Dot(movement.normalized, transform.forward);
+            float velocityX = Vector3.Dot(movement.normalized, transform.right);
+
+            _playerController.GetAnimator().SetFloat("fForwardVelocity", velocityZ, 0.1f, Time.deltaTime);
+            _playerController.GetAnimator().SetFloat("fHorizontalVelocity", velocityX, 0.1f, Time.deltaTime);
+        }
+
+        ///// <summary>
+        ///// Returns the signed angle between this 2D vector and another.
+        ///// (This is unlike Vector2.Angle, which always returns the
+        ///// absolute value of the angle.)
+        ///// </summary>
+        ///// <returns>The signed angle, in degrees, from A to B.</returns>
+        ///// <param name="a">Vector this was called on.</param>
+        ///// <param name="b">Vector to measure the angle to.</param>
+        private float SignedAngleTo(Vector3 a, Vector3 b)
+        {
+            return Mathf.Atan2(a.x * b.z - a.z * b.x, a.x * b.x + a.z * b.z) * Mathf.Rad2Deg;
         }
 
         protected void LookTowardEnemyIndex(List<GameObject> list)
