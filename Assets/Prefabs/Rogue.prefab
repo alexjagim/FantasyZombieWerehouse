@@ -52,7 +52,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4650531252368175825
 Transform:
   m_ObjectHideFlags: 0
@@ -185,7 +185,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fe4078e38f069a40b9fed520570bb22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _obj_Indicator: {fileID: 1478390178031995916, guid: beb05c1a9b1be9f45a64a2748834c1bb, type: 3}
+  _obj_Indicator: {fileID: 7131782527495956157}
+  _fVisionCone: 45
+  _bUpdateAnimator: 1
   _fRangeForLockOn: 20
   _bAutomaticallyLockOnNextEnemy: 1
   _list_EnemiesInRange: []
@@ -743,7 +745,7 @@ Animator:
   m_GameObject: {fileID: 8196526475376482098}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 34d530461bec694428ff689cbae8692d, type: 3}
-  m_Controller: {fileID: 9100000, guid: 09ff5a3cfcd6702479b9bf9fca16e830, type: 2}
+  m_Controller: {fileID: 22100000, guid: c39175403e418e9428e4fad2acce7649, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1171,6 +1173,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: beb05c1a9b1be9f45a64a2748834c1bb, type: 3}
+--- !u!1 &7131782527495956157 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1478390178031995916, guid: beb05c1a9b1be9f45a64a2748834c1bb, type: 3}
+  m_PrefabInstance: {fileID: 8538088654491216561}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7131782527495956034 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1478390178031996147, guid: beb05c1a9b1be9f45a64a2748834c1bb, type: 3}

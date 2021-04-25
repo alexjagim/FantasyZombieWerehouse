@@ -65,7 +65,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5343631827246554779
 Transform:
   m_ObjectHideFlags: 0
@@ -220,6 +220,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _obj_Indicator: {fileID: 5343631827941573203}
+  _fVisionCone: 45
+  _bUpdateAnimator: 1
   _fRangeForLockOn: 20
   _bAutomaticallyLockOnNextEnemy: 1
   _list_EnemiesInRange: []
@@ -290,6 +292,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5343631827246554779}
     m_Modifications:
+    - target: {fileID: 6383143599543388239, guid: ec8cb55dea48599499f357baa1e2b608, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 22100000, guid: 35da8ab7bd8964d40811e25d993e64a8, type: 2}
     - target: {fileID: 6383143599543388239, guid: ec8cb55dea48599499f357baa1e2b608, type: 3}
       propertyPath: m_ApplyRootMotion
       value: 0

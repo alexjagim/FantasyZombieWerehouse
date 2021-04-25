@@ -13,6 +13,9 @@ namespace Foundation.Unit.Player.Humanoid
         [SerializeField, LabelText("Vision Cone Size")]
         private float _fVisionCone = 45.0f;
 
+        [SerializeField, LabelText("Update Animator")]
+        private bool _bUpdateAnimator = false;
+
         protected PlayerHumanoidController _playerController;
         private PlayerInputActions _inputActions;
 
@@ -23,9 +26,7 @@ namespace Foundation.Unit.Player.Humanoid
 
         private Rigidbody _rigidbody;
 
-        [SerializeField]
         private float _fAnimPreviousDistance = -1.0f;
-        [SerializeField]
         private float _fAnimPreviousAngle;
 
         // Start is called before the first frame update
@@ -69,7 +70,7 @@ namespace Foundation.Unit.Player.Humanoid
                 WhileLockedOnEnemyFunctionality();
             }
 
-            if (_playerController.IsLockedOntoEnemy)
+            if (_playerController.IsLockedOntoEnemy && _bUpdateAnimator)
             {
                 UpdateAnimator();
             }

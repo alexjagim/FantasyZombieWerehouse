@@ -2763,6 +2763,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Archer
       objectReference: {fileID: 0}
+    - target: {fileID: 5480474757637222135, guid: 071ade7af7ab0284f8b3fe20342af0bd, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5771738376060225031, guid: 071ade7af7ab0284f8b3fe20342af0bd, type: 3}
       propertyPath: _gameManager
       value: 
@@ -2779,6 +2783,10 @@ PrefabInstance:
     - target: {fileID: 5343631827246554778, guid: f22c00f232e341847a994989609be5e0, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 5343631827246554778, guid: f22c00f232e341847a994989609be5e0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5343631827246554779, guid: f22c00f232e341847a994989609be5e0, type: 3}
       propertyPath: m_RootOrder
@@ -2840,6 +2848,10 @@ PrefabInstance:
     - target: {fileID: 4650531252368175824, guid: 59a667c2502adfe40993a875cb08b26f, type: 3}
       propertyPath: m_Name
       value: Rogue
+      objectReference: {fileID: 0}
+    - target: {fileID: 4650531252368175824, guid: 59a667c2502adfe40993a875cb08b26f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4650531252368175825, guid: 59a667c2502adfe40993a875cb08b26f, type: 3}
       propertyPath: m_RootOrder

@@ -17,8 +17,8 @@ MonoBehaviour:
   attackSpeed: 1
   damage: 1
   sAnimationToggle: Attack
-  canRotateDuringAttack: 1
-  canMoveDuringAttack: 1
+  canRotateDuringAttack: 0
+  canMoveDuringAttack: 0
   knockbackEffect: 0
   knockbackForce: 0
   knockbackDistance: 0
