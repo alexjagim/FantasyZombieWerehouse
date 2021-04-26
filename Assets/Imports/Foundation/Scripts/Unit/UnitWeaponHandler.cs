@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
+using Foundation.Weapon;
 using Foundation.Weapon.ScriptableObject;
 
 namespace Foundation.Unit
@@ -15,17 +16,14 @@ namespace Foundation.Unit
         [SerializeField, LabelText("Equipped Weapons")]
         protected List<GenericWeapon> _weapons_Equipped;
 
+        [SerializeField, LabelText("Has Attack Area"), ReadOnly]
+        protected bool _bHasAttackArea;
+
+        [SerializeField, LabelText("Area Attack Position")]
+        protected Transform _trans_AreaAttackSpawnPosition;
+
         [SerializeField, LabelText("Weapon Spawn Parent")]
         protected Transform _trans_WeaponSpawnParent;
-
-        [SerializeField, LabelText("Damage Position")]
-        protected Transform _trans_WeaponDamagePosition;
-
-        [SerializeField, LabelText("Damage Area Size")]
-        protected Vector3 _vect_WeaponDamageSize;
-
-        [SerializeField, LabelText("Debug Damage Area")]
-        private bool _bDebugDamageArea;
 
         protected Animator _animator;
 
@@ -89,6 +87,13 @@ namespace Foundation.Unit
         {
             _obj_weaponCurrent = _list_weapons[_iWeaponIndex];
             _obj_weaponCurrent.SetActive(true);
+
+            _bHasAttackArea = _weapon_Current.usesAreaOfEffectDamage;
+            
+            if (_bHasAttackArea)
+            {
+                MoveAreaAttackColliderFromWeaponPrefab(_iWeaponIndex);
+            }
         }
 
         protected virtual void AnimationEquipWeapon()
@@ -108,6 +113,11 @@ namespace Foundation.Unit
                 return;
             }
 
+            if (_bHasAttackArea)
+            {
+                MoveAreaAttackColliderToWeaponPrefab(_iWeaponIndex);
+            }
+
             _iWeaponIndex = iWeaponIndex;
 
             _obj_weaponCurrent.SetActive(false);
@@ -120,6 +130,13 @@ namespace Foundation.Unit
             _obj_weaponCurrent.SetActive(true);
 
             AnimationEquipWeapon();
+
+            _bHasAttackArea = _weapon_Current.usesAreaOfEffectDamage;
+
+            if (_bHasAttackArea)
+            {
+                MoveAreaAttackColliderFromWeaponPrefab(_iWeaponIndex);
+            }
 
             _animator.SetFloat("Head_Horizontal_f", _weapon_Current.fHeadHorizontalRotation);
             _animator.SetFloat("Body_Horizontal_f", _weapon_Current.fBodyHorizontalRotation);
@@ -197,12 +214,15 @@ namespace Foundation.Unit
             _bCurrentlyAttacking = false;
         }
 
-        void OnDrawGizmos()
+        private void MoveAreaAttackColliderFromWeaponPrefab(int iIndex)
         {
-            Gizmos.color = Color.red;
+            _list_weapons[iIndex].GetComponent<WeaponAreaAttackManager>()._collider.transform.parent = transform;
+            _list_weapons[iIndex].GetComponent<WeaponAreaAttackManager>()._collider.transform.position = _trans_AreaAttackSpawnPosition.position;
+        }
 
-            if (_bDebugDamageArea)
-                Gizmos.DrawWireCube(_trans_WeaponDamagePosition.position, _vect_WeaponDamageSize);
+        private void MoveAreaAttackColliderToWeaponPrefab(int iIndex)
+        {
+            _list_weapons[iIndex].GetComponent<WeaponAreaAttackManager>()._collider.transform.parent = _list_weapons[iIndex].transform;
         }
     }
 }

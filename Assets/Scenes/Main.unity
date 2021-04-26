@@ -2070,6 +2070,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &2135220661 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5039128794521107531, guid: f22c00f232e341847a994989609be5e0, type: 3}
+  m_PrefabInstance: {fileID: 5343631826496256300}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1364016227803549516
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2832,6 +2837,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5984621789960972883, guid: f22c00f232e341847a994989609be5e0, type: 3}
+      propertyPath: _trans_AreaAttackSpawnPosition
+      value: 
+      objectReference: {fileID: 2135220661}
     - target: {fileID: 6214896487973385834, guid: f22c00f232e341847a994989609be5e0, type: 3}
       propertyPath: _gameManager
       value: 

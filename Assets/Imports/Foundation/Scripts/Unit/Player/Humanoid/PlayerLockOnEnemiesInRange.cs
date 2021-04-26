@@ -36,6 +36,21 @@ namespace Foundation.Unit.Player.Humanoid
 
         private void UpdateEnemiesAlreadyInRange()
         {
+            //Clear Null Enemies
+            for (int i = 0; i < _list_EnemiesInRange.Count; ++i)
+            {
+                if (_list_EnemiesInRange[i] == null)
+                {
+                    _list_EnemiesInRange.RemoveAt(i);
+                    i--;
+                }
+            }
+
+            if (_list_EnemiesInRange.Count == 0)
+            {
+                CancelLockOnEnemiesFunctionality();
+            }
+
             //Check if enemies are still in range
             for (int i = 0; i < _list_EnemiesInRange.Count; ++i)
             {
@@ -72,13 +87,16 @@ namespace Foundation.Unit.Player.Humanoid
         {
             for (int i = 0; i < _list_Enemies.Count; ++i)
             {
-                //Check if new enemies are now in range
-                if (Vector3.Distance(transform.position, _list_Enemies[i].transform.position) <= _fRangeForLockOn)
+                if (_list_Enemies[i] != null)
                 {
-                    //Make sure this enemy hasn't already been added to the list of enemies in range
-                    if (!_list_EnemiesInRange.Contains(_list_Enemies[i]))
+                    //Check if new enemies are now in range
+                    if (Vector3.Distance(transform.position, _list_Enemies[i].transform.position) <= _fRangeForLockOn)
                     {
-                        _list_EnemiesInRange.Add(_list_Enemies[i]);
+                        //Make sure this enemy hasn't already been added to the list of enemies in range
+                        if (!_list_EnemiesInRange.Contains(_list_Enemies[i]))
+                        {
+                            _list_EnemiesInRange.Add(_list_Enemies[i]);
+                        }
                     }
                 }
             }            

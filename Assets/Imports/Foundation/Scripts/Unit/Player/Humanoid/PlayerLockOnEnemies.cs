@@ -26,9 +26,6 @@ namespace Foundation.Unit.Player.Humanoid
 
         private Rigidbody _rigidbody;
 
-        private float _fAnimPreviousDistance = -1.0f;
-        private float _fAnimPreviousAngle;
-
         // Start is called before the first frame update
         void Start()
         {
@@ -94,7 +91,6 @@ namespace Foundation.Unit.Player.Humanoid
         protected virtual void CancelLockOnEnemiesFunctionality()
         {
             _playerController.SetIsLockedOntoEnemy(false);
-            _fAnimPreviousDistance = -1.0f;
 
             DeactivateIndicator();
         }

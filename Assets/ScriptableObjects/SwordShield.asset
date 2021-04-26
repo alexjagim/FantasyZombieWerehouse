@@ -19,6 +19,7 @@ MonoBehaviour:
   sAnimationToggle: Attack
   canRotateDuringAttack: 0
   canMoveDuringAttack: 0
+  usesAreaOfEffectDamage: 1
   knockbackEffect: 1
   knockbackForce: 1500
   knockbackDistance: 5

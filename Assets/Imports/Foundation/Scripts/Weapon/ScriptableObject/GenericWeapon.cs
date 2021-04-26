@@ -26,6 +26,9 @@ namespace Foundation.Weapon.ScriptableObject
         [BoxGroup("Base Properties"), LabelWidth(145)]
         public bool canMoveDuringAttack;
 
+        [BoxGroup("Base Properties"), LabelWidth(165)]
+        public bool usesAreaOfEffectDamage;
+
         [BoxGroup("Base Properties")]
         public bool knockbackEffect;
 
@@ -34,6 +37,7 @@ namespace Foundation.Weapon.ScriptableObject
 
         [BoxGroup("Base Properties"), ShowIf("knockbackEffect")]
         public float knockbackDistance;
+
 
         [LabelText("Head Horizontal Rotation"), Range(-1, 1), BoxGroup("Base Properties")]
         public float fHeadHorizontalRotation;

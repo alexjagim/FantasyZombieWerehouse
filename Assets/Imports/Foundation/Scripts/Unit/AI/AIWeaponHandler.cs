@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
+using Foundation.Weapon;
 
 namespace Foundation.Unit.AI
 {
@@ -20,13 +21,16 @@ namespace Foundation.Unit.AI
         {
             base.Attack();
 
-            Collider[] hitColliders = Physics.OverlapBox(_trans_WeaponDamagePosition.position, _vect_WeaponDamageSize / 2, Quaternion.identity);
-
-            for (int i = 0; i < hitColliders.Length; ++i)
+            if (_bHasAttackArea)
             {
-                if (hitColliders[i].transform.tag == "Player")
+                List<GameObject> _list_ObjectsInRange = _obj_weaponCurrent.GetComponent<WeaponAreaAttackManager>().GetComponent<WeaponAreaAttackManager>()._list_ObjectsInArea;
+
+                for (int i = 0; i < _list_ObjectsInRange.Count; ++i)
                 {
-                    hitColliders[i].GetComponent<UnitController>().TakeDamage(_weapon_Current.damage);
+                    if (_list_ObjectsInRange[i].transform.tag == "Player")
+                    {
+                        _list_ObjectsInRange[i].GetComponent<UnitController>().TakeDamage(_weapon_Current.damage);
+                    }
                 }
             }
         }

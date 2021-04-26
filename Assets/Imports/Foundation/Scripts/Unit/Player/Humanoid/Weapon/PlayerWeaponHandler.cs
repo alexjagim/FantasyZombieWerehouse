@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
 using Foundation.Unit.AI.Humanoid;
+using Foundation.Weapon;
 
 namespace Foundation.Unit.Player.Humanoid.Weapon
 {
@@ -41,17 +42,22 @@ namespace Foundation.Unit.Player.Humanoid.Weapon
                 }
             }
 
-            Collider[] hitColliders = Physics.OverlapBox(_trans_WeaponDamagePosition.position, _vect_WeaponDamageSize / 2, Quaternion.identity);
-
-            for (int i = 0; i < hitColliders.Length; ++i)
+            if (_bHasAttackArea)
             {
-                if (hitColliders[i].transform.tag == "Enemy")
-                {
-                    hitColliders[i].GetComponent<UnitController>().TakeDamage(_weapon_Current.damage);
+                List<GameObject> _list_ObjectsInRange = _obj_weaponCurrent.GetComponent<WeaponAreaAttackManager>()._list_ObjectsInArea;
 
-                    if (_weapon_Current.knockbackEffect)
+                for (int i = 0; i < _list_ObjectsInRange.Count; ++i)
+                {
+                    if (_list_ObjectsInRange[i].transform.tag == "Enemy")
                     {
-                        hitColliders[i].GetComponent<AIHumanoidController>().BeKnockedBack(this.transform, _weapon_Current.knockbackDistance, _weapon_Current.knockbackForce);
+                        Debug.Log("Hit Enemy");
+
+                        _list_ObjectsInRange[i].GetComponent<UnitController>().TakeDamage(_weapon_Current.damage);
+
+                        if (_weapon_Current.knockbackEffect)
+                        {
+                            _list_ObjectsInRange[i].GetComponent<AIHumanoidController>().BeKnockedBack(this.transform, _weapon_Current.knockbackDistance, _weapon_Current.knockbackForce);
+                        }
                     }
                 }
             }
