@@ -63,7 +63,7 @@ namespace Foundation.Unit.Player.Humanoid.Weapon
             {
                 if (_iAmmoCurrent > 0)
                 {
-                    Attack();
+                    StartCoroutine(StartAttack());
                 }
                 else
                 {
@@ -82,6 +82,8 @@ namespace Foundation.Unit.Player.Humanoid.Weapon
 
         protected override void Attack()
         {
+            base.Attack();
+
             Fire();
         }
 

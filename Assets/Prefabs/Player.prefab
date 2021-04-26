@@ -169,7 +169,7 @@ MonoBehaviour:
   _weapons_Equipped:
   - {fileID: 11400000, guid: 65f83c36fe5ad6c459f13ec4556f6d31, type: 2}
   _bHasAttackArea: 0
-  _obj_HitBox: {fileID: 0}
+  _trans_AreaAttackSpawnPosition: {fileID: 5039128794521107531}
   _trans_WeaponSpawnParent: {fileID: 4942553657898725017}
   _bNextWeaponToggleEnabled: 0
   _trans_SecondaryWeaponSpawnParent: {fileID: 9191976478375866837}

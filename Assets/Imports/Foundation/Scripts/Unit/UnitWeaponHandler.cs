@@ -164,9 +164,11 @@ namespace Foundation.Unit
             return !_bCurrentlyAttacking;
         }
 
-        protected virtual void Attack()
+        private void AttackLogic()
         {
             StartCoroutine(SetAttacking(1 / _weapon_Current.attackSpeed));
+
+            StartCoroutine(StartAttack());
 
             _animator.SetTrigger(_weapon_Current.sAnimationToggle);
         }
@@ -175,7 +177,7 @@ namespace Foundation.Unit
         {
             if (CanAttack())
             {
-                Attack();
+                AttackLogic();
             }
         }
 
@@ -212,6 +214,18 @@ namespace Foundation.Unit
             _humanoidController.CanRotate = bRotateTemp;
 
             _bCurrentlyAttacking = false;
+        }
+
+        protected virtual IEnumerator StartAttack()
+        {
+            yield return new WaitForSeconds(_weapon_Current.fAnimationDelay);
+
+            Attack();
+        }
+
+        protected virtual void Attack()
+        {
+
         }
 
         private void MoveAreaAttackColliderFromWeaponPrefab(int iIndex)

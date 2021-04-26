@@ -17,6 +17,7 @@ MonoBehaviour:
   attackSpeed: 0.75
   damage: 1
   sAnimationToggle: Attack
+  fAnimationDelay: 0.5
   canRotateDuringAttack: 0
   canMoveDuringAttack: 0
   usesAreaOfEffectDamage: 1

@@ -21,6 +21,9 @@ namespace Foundation.Weapon.ScriptableObject
         [LabelText("Animation Toggle"), BoxGroup("Base Properties")]
         public string sAnimationToggle;
 
+        [LabelText("Animation Delay"), BoxGroup("Base Properties")]
+        public float fAnimationDelay;
+
         [BoxGroup("Base Properties"), LabelWidth(145)]
         public bool canRotateDuringAttack;
         [BoxGroup("Base Properties"), LabelWidth(145)]

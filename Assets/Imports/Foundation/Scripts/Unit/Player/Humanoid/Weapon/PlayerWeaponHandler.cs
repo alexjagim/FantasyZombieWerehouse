@@ -34,7 +34,7 @@ namespace Foundation.Unit.Player.Humanoid.Weapon
         {
             base.Attack();
 
-            if(_bContainsLockOnEnemiesScript)
+            if (_bContainsLockOnEnemiesScript)
             {
                 if (!_humanoidController.IsLockedOntoEnemy)
                 {
@@ -62,6 +62,7 @@ namespace Foundation.Unit.Player.Humanoid.Weapon
                 }
             }
         }
+
 
         protected override void UpdateObject()
         {
