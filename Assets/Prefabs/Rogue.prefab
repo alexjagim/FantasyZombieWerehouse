@@ -45,6 +45,7 @@ GameObject:
   - component: {fileID: 3172326027767071985}
   - component: {fileID: 8863655274528208942}
   - component: {fileID: 766286338030177270}
+  - component: {fileID: 583036012889134059}
   - component: {fileID: 7157093995600151248}
   m_Layer: 0
   m_Name: Rogue
@@ -155,10 +156,9 @@ MonoBehaviour:
   _weapon_Current: {fileID: 11400000, guid: 7412cc38149ba1743a6c287dd1938e29, type: 2}
   _weapons_Equipped:
   - {fileID: 11400000, guid: 7412cc38149ba1743a6c287dd1938e29, type: 2}
+  _bHasAttackArea: 0
+  _trans_AreaAttackSpawnPosition: {fileID: 0}
   _trans_WeaponSpawnParent: {fileID: 5785915002289001204}
-  _trans_WeaponDamagePosition: {fileID: 5714207755596599297}
-  _vect_WeaponDamageSize: {x: 1, y: 0.5, z: 1.5}
-  _bDebugDamageArea: 0
   _bNextWeaponToggleEnabled: 0
   _trans_SecondaryWeaponSpawnParent: {fileID: 8611580261164596929}
 --- !u!114 &766286338030177270
@@ -173,6 +173,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e69c9ea57190f894880aa8fa8000e5c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &583036012889134059
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4650531252368175824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60edf007271206248a8b82745d7c14c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilities: []
+  animator: {fileID: 0}
+  _bAbilitiesCanTrigger: 
+  _bAbilitiesAreToggledOn: 
+  effects_onAttack: []
+  effects_onHit: []
+  effects_Continuous: []
+  effects_OnCollision: []
 --- !u!114 &7157093995600151248
 MonoBehaviour:
   m_ObjectHideFlags: 0

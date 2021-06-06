@@ -219,6 +219,16 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &295216316 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8196526475376203544, guid: 59a667c2502adfe40993a875cb08b26f, type: 3}
+  m_PrefabInstance: {fileID: 8538088653251584817}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &295216318 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 8196526475369152848, guid: 59a667c2502adfe40993a875cb08b26f, type: 3}
+  m_PrefabInstance: {fileID: 8538088653251584817}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &370082549
 GameObject:
   m_ObjectHideFlags: 0
@@ -337,6 +347,11 @@ MonoBehaviour:
   m_CameraActivatedEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!4 &654388802 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4650531252368175825, guid: 59a667c2502adfe40993a875cb08b26f, type: 3}
+  m_PrefabInstance: {fileID: 8538088653251584817}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &767008030
 GameObject:
   m_ObjectHideFlags: 0
@@ -1019,7 +1034,7 @@ PrefabInstance:
     - target: {fileID: 7421431462096698830, guid: 77e20cec3dba4b74da2c021839756749, type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 1430742967}
+      objectReference: {fileID: 295216316}
     - target: {fileID: 7421431462096698830, guid: 77e20cec3dba4b74da2c021839756749, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -1677,7 +1692,7 @@ PrefabInstance:
     - target: {fileID: 7421431462096698830, guid: 77e20cec3dba4b74da2c021839756749, type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 1430742967}
+      objectReference: {fileID: 295216316}
     - target: {fileID: 7421431462096698830, guid: 77e20cec3dba4b74da2c021839756749, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -2070,11 +2085,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &2135220661 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5039128794521107531, guid: f22c00f232e341847a994989609be5e0, type: 3}
-  m_PrefabInstance: {fileID: 5343631826496256300}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1364016227803549516
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2657,7 +2667,7 @@ PrefabInstance:
     - target: {fileID: 7421431462096698830, guid: 77e20cec3dba4b74da2c021839756749, type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 1430742967}
+      objectReference: {fileID: 654388802}
     - target: {fileID: 7421431462096698830, guid: 77e20cec3dba4b74da2c021839756749, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -2791,7 +2801,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5343631827246554778, guid: f22c00f232e341847a994989609be5e0, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5343631827246554779, guid: f22c00f232e341847a994989609be5e0, type: 3}
       propertyPath: m_RootOrder
@@ -2837,10 +2847,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5984621789960972883, guid: f22c00f232e341847a994989609be5e0, type: 3}
-      propertyPath: _trans_AreaAttackSpawnPosition
-      value: 
-      objectReference: {fileID: 2135220661}
     - target: {fileID: 6214896487973385834, guid: f22c00f232e341847a994989609be5e0, type: 3}
       propertyPath: _gameManager
       value: 
@@ -2854,13 +2860,29 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 583036012889134059, guid: 59a667c2502adfe40993a875cb08b26f, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 295216318}
+    - target: {fileID: 583036012889134059, guid: 59a667c2502adfe40993a875cb08b26f, type: 3}
+      propertyPath: abilities.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 583036012889134059, guid: 59a667c2502adfe40993a875cb08b26f, type: 3}
+      propertyPath: abilities.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: c93fa8383fe936a42b2ce5bc3202b1bf, type: 2}
+    - target: {fileID: 766286338030177265, guid: 59a667c2502adfe40993a875cb08b26f, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4650531252368175824, guid: 59a667c2502adfe40993a875cb08b26f, type: 3}
       propertyPath: m_Name
       value: Rogue
       objectReference: {fileID: 0}
     - target: {fileID: 4650531252368175824, guid: 59a667c2502adfe40993a875cb08b26f, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4650531252368175825, guid: 59a667c2502adfe40993a875cb08b26f, type: 3}
       propertyPath: m_RootOrder
